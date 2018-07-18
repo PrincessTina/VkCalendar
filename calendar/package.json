@@ -10,8 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "dev": "node_modules\\.bin\\webpack --mode development",
     "prod": "node_modules\\.bin\\webpack --mode production",
-    "dev": "node_modules\\.bin\\webpack --mode development"
+    "save": "xcopy src\\static c:\\users\\krist\\documents\\repo\\calendar\\docs /E /Y"
   },
   "dependencies": {
     "@types/react-dom": "^16.0.6",
