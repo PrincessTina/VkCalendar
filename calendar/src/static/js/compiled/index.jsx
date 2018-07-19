@@ -6,7 +6,7 @@ import Hello from '../components/Hello.jsx';
 document.onreadystatechange = function () {
     if (document.readyState === "interactive") {
         ReactDOM.render(
-            <Hello/>,
+            <Hello name={"Tom"} age={12}/>,
             document.getElementById('hello_world')
         );
     }
