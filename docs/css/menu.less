@@ -1,0 +1,47 @@
+.menu__container(@width: 200px) {
+  width: @width;
+  height: 28.8px;
+  padding: 6px 0 0 10px;
+  margin: 11px 0 0 15px;
+  box-sizing: border-box;
+  border: #edeef0 1px solid;
+}
+
+.menu {
+  float: right;
+  background-color: white;
+  width: 230px;
+  padding-bottom: 15px;
+
+  .menu__title {
+    width: 200px;
+    padding: 15px 0 0 15px;
+    color: #656565;
+    font-weight: 700;
+  }
+
+  .menu__container--normal {
+    .menu__container;
+  }
+
+  .menu__wrapper {
+    display: flex;
+    width: 200px;
+    margin-left: 15px;
+  }
+
+  .menu__container--small {
+    .menu__container(90px);
+    margin-left: 0;
+  }
+
+  .menu__range-sep {
+    padding: 17px 14px 0 14px
+  }
+
+  .menu__sex-selection {
+    margin: 11px 0 0 10px;
+    font-size: 13px;
+  }
+}
+

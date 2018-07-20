@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Hello from '../components/Hello.jsx';
+import Menu from '../components/Menu.jsx';
+
+import '../../css/main.less';
 
 document.onreadystatechange = function () {
     if (document.readyState === "interactive") {
         ReactDOM.render(
-            <Hello name={"Tom"} age={12}/>,
-            document.getElementById('hello_world')
+            <Menu/>,
+            document.getElementsByClassName('root')[0]
         );
     }
 };

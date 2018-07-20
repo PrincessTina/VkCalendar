@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="24px" viewBox="0 0 23 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Asset 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Reiseplanlegger-2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Open-Search-Copy" transform="translate(-537.000000, -442.000000)" fill-rule="nonzero">
+            <g id="Asset-5" transform="translate(537.000000, 442.000000)">
+                <rect id="Rectangle-path" fill="#E1251B" x="9.46666667" y="1.11466667" width="3.776" height="2.13333333"></rect>
+                <rect id="Rectangle-path" fill="#1E1E1C" x="5.19466667" y="0" width="2.13333333" height="4.02666667"></rect>
+                <path d="M12.176,17.68 C11.5868963,17.68 11.1093333,17.2024371 11.1093333,16.6133333 L11.1093333,7.11466667 L13.2426667,8 L13.2426667,16.6133333 C13.2426667,17.2024371 12.7651037,17.68 12.176,17.68 Z" id="Shape" fill="#1991A4"></path>
+                <polygon id="Shape" fill="#C8C7C6" points="9.94666667 11.296 8.43733333 9.78666667 11.1146667 7.11466667 13.248 8"></polygon>
+                <polygon id="Shape" fill="#E1251B" points="19.648 1.11466667 19.648 3.248 20.8213333 3.248 20.8213333 21.744 2.13333333 21.744 2.13333333 3.248 3.05066667 3.248 3.05066667 1.11466667 0 1.11466667 0 1.11466667 0 3.248 0 21.744 0 23.8773333 2.13333333 23.8773333 20.8213333 23.8773333 22.9546667 21.744 22.9546667 3.248 22.9546667 1.11466667"></polygon>
+                <rect id="Rectangle-path" fill="#1E1E1C" x="15.392" y="0" width="2.13333333" height="4.02666667"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
