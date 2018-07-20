@@ -1,4 +1,4 @@
-@background-color: #edeef0;
+@border-color: #dedfe1;
 
 .dateIntervalPickerHidden {
   width: 200px;
@@ -6,7 +6,7 @@
   padding: 6px 0 0 10px;
   margin: 11px 0 0 15px;
   box-sizing: border-box;
-  border: @background-color 1px solid;
+  border: @border-color 1px solid;
 
   .wrapper {
     display: flex;
@@ -25,5 +25,22 @@
 
 .dateIntervalPickerHidden:hover {
   cursor: pointer;
-  background-color: fadeout(@background-color, 40%);
+  background-color: fadeout(@border-color, 40%);
+}
+
+.dateIntervalPicker__popupWindow {
+  height: 1px;
+  position: relative;
+  float: right;
+  margin-right: 15px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s;
+}
+
+.dateIntervalPicker__popupWindow-visible {
+  .dateIntervalPicker__popupWindow;
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
 }
