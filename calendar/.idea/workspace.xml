@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateIntervalPickerOpened.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DateIntervalPickerOpened.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -46,7 +46,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dateIntervalPickerOpened.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dateIntervalPickerOpened.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/static/css/dateIntervalPickerOpened.less">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -86,8 +86,8 @@
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerFull.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx" />
         <option value="$PROJECT_DIR$/src/static/css/dateIntervalPickerOpened.less" />
-        <option value="$PROJECT_DIR$/src/static/css/dateIntervalPickerHidden.less" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerHidden.jsx" />
+        <option value="$PROJECT_DIR$/src/static/css/dateIntervalPickerHidden.less" />
       </list>
     </option>
   </component>
@@ -223,7 +223,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build dev version">
+  <component name="RunManager" selected="npm.make new github page">
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts>
@@ -283,12 +283,12 @@
       <workItem from="1531853630764" duration="6469000" />
       <workItem from="1531911430602" duration="8231000" />
       <workItem from="1531922459265" duration="5593000" />
-      <workItem from="1531935631760" duration="56351000" />
+      <workItem from="1531935631760" duration="56636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76644000" />
+    <option name="totallyTimeSpent" value="76929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -299,7 +299,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -604,22 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/dateIntervalPickerHidden.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/dateIntervalPickerOpened.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerHidden.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
@@ -655,6 +639,22 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/dateIntervalPickerHidden.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/dateIntervalPickerOpened.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
