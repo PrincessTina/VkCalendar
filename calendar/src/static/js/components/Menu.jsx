@@ -1,5 +1,7 @@
 import React from "react";
 
+import DateIntervalPickerHidden from '../components/DateIntervalPickerHidden.jsx';
+
 import '../../css/menu.less';
 
 /*
@@ -26,6 +28,10 @@ export default class Menu extends React.Component {
                     Школа
                 </div>
                 <div className={'menu__title'}>
+                    Временной интервал
+                </div>
+                <DateIntervalPickerHidden/>
+                <div className={'menu__title'}>
                     Университет
                 </div>
                 <div className={'menu__title'}>
@@ -46,7 +52,7 @@ export default class Menu extends React.Component {
                     Пол
                 </div>
                 <div className={'menu__sex-selection'}>
-                    <input type="radio" name="sex" checked={true}/> Женский
+                    <input type="radio" name="sex" defaultChecked={true}/> Женский
                     <div/>
                     <input type="radio" name="sex"/> Мужской
                     <div/>

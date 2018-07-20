@@ -24,6 +24,12 @@ module.exports = {
                 }, {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: {
+                    loader: "url-loader"
+                },
             }
         ]
     }
