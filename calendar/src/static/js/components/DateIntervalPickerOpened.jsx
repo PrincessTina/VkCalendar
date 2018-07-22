@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import '../../css/dateIntervalPickerOpened.less';
@@ -98,10 +97,6 @@ export default class DateIntervalPickerOpened extends React.Component {
         fullContent.push(followingYearContent);
 
         return fullContent;
-    }
-
-    componentDidMount() {
-        //this.selectMonths();
     }
 
     /**
