@@ -39,6 +39,24 @@
       .month {
         color: @blueColor;
       }
+
+      .month-selected {
+        .month;
+        font-weight: 700;
+      }
+    }
+
+    .border {
+      width: 61px;
+      height: 1px;
+      background-color: @monthBorderColor;
+      margin: 0 -2em;
+      visibility: hidden;
+    }
+
+    .border-visible {
+      .border;
+      visibility: visible;
     }
   }
 }

@@ -1,22 +1,108 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import '../../css/dateIntervalPickerOpened.less';
+
+let selectedMonthLeftIndex = null;
+let selectedMonthRightIndex = null;
 
 export default class DateIntervalPickerOpened extends React.Component {
     constructor(props) {
         super(props);
 
-        this.pip = this.pip.bind(this);
-
         this.state = {arrayOfMonths: [], arrayOfIndexesOfVisibleMonths: []};
+
+        this.selectMonths = this.selectMonths.bind(this);
 
         setTimeout(function (component) {
             component.fillArrayOfMonths();
             component.fillArrayOfIndexesOfVisibleMonths();
-        }, 1000, this);
+        }, 1, this);
     }
 
+    render() {
+        let content = this.renderMonths();
+
+        return (
+            <div className={'dateIntervalPickerOpened'}>
+                <div className={'dateIntervalPickerOpened__content'}>
+                    <div className={'line'}>
+                        {content}
+                    </div>
+                    <div className={'calendar'}/>
+                </div>
+            </div>
+        );
+    }
+
+    /**
+     * Returns month's content for rendering
+     *
+     * @state arrayOfMonths
+     * @state arrayOfIndexesOfVisibleMonths
+     */
+    renderMonths() {
+        let arrayOfIndexesOfVisibleMonths = this.state.arrayOfIndexesOfVisibleMonths;
+        let arraySize = arrayOfIndexesOfVisibleMonths.length;
+        let followingYear = null;
+        let previousYear = null;
+        let fullContent = [];
+        let previousYearContent = [];
+        let betweenYearsContent = [];
+        let followingYearContent = [];
+
+        for (let i = 0; i < arraySize; i++) {
+            let index = arrayOfIndexesOfVisibleMonths[i];
+            let id = index + "-" + (index + 1);
+            let object = this.state.arrayOfMonths[index];
+
+            // sets the years
+            if (previousYear === null) {
+                previousYear = object.year;
+            } else if (previousYear !== object.year) {
+                followingYear = object.year;
+            }
+
+            if (object.year === previousYear) { // sets the previous year content
+                previousYearContent.push(<div className={'month'} id={index}>{object.month.substr(0, 3)}</div>);
+
+                if (object.number !== 12) {
+                    this.pushBetweenMonthBlock(previousYearContent, id);
+                } else {
+                    let timing;
+
+                    previousYearContent = this.trimTheContent(previousYearContent, previousYear, true);
+
+                    betweenYearsContent.push(<div className={'between'}/>); // sets between year content
+                    this.pushBetweenMonthBlock(betweenYearsContent, id);
+
+                    timing = betweenYearsContent;
+
+                    betweenYearsContent = [];
+                    betweenYearsContent.push(<div className={'betweenYears'}>{timing}</div>);
+                }
+            } else if (object.year === followingYear) { // sets the following year content
+                followingYearContent.push(<div className={'month'} id={index}>{object.month.substr(0, 3)}</div>);
+
+                if (i !== arraySize - 1) {
+                    this.pushBetweenMonthBlock(followingYearContent, id);
+                } else {
+                    followingYearContent = this.trimTheContent(followingYearContent, followingYear, false);
+                }
+            }
+        }
+
+        fullContent.push(previousYearContent);
+        fullContent.push(betweenYearsContent);
+        fullContent.push(followingYearContent);
+
+        return fullContent;
+    }
+
+    componentDidMount() {
+        //this.selectMonths();
+    }
 
     /**
      * Fills the arrayOfMonths in state
@@ -101,9 +187,12 @@ export default class DateIntervalPickerOpened extends React.Component {
     /**
      * Fills the arrayOfIndexesOfVisibleMonths in state
      * (the indexes of the 12 months that will be visible at start time)
+     * Also sets indexes of selected months in state at start moment
      *
      * @props dateFrom
      * @state arrayOfIndexesOfVisibleMonths
+     * @state selectedMonthLeftIndex
+     * @state selectedMonthRightIndex
      */
     fillArrayOfIndexesOfVisibleMonths() {
         let rightMonth = this.props.dateTo.getMonth() + 1;
@@ -120,115 +209,119 @@ export default class DateIntervalPickerOpened extends React.Component {
             }
         }
 
-        for (let i = searchedIndex; i > searchedIndex - 12; i--) {
-            arrayOfIndexesOfVisibleMonths.push(i);
+        arrayOfIndexesOfVisibleMonths.push(searchedIndex);
+
+        if (searchedIndex + 5 < this.state.arrayOfMonths.length && searchedIndex - 6 >= 0) { // if months are enough and left and right
+            for (let i = searchedIndex + 1; i <= searchedIndex + 5; i++) {
+                arrayOfIndexesOfVisibleMonths.push(i);
+            }
+
+            for (let i = searchedIndex - 1; i >= searchedIndex - 6; i--) {
+                arrayOfIndexesOfVisibleMonths.unshift(i);
+            }
+        } else if (searchedIndex - 6 < 0) { // if months are enough only with right side
+            let maxLeft = 0;
+
+            for (let i = searchedIndex - 1; i >= 0; i--) {
+                arrayOfIndexesOfVisibleMonths.unshift(i);
+                maxLeft++;
+            }
+
+            for (let i = searchedIndex + 1; i <= 11 - maxLeft + searchedIndex; i++) {
+                arrayOfIndexesOfVisibleMonths.push(i);
+            }
+        } else if (searchedIndex + 5 >= this.state.arrayOfMonths.length) { // if months are enough only with left side
+            let maxRight = 0;
+
+            for (let i = searchedIndex + 1; i < this.state.arrayOfMonths.length; i++) {
+                arrayOfIndexesOfVisibleMonths.push(i);
+                maxRight++;
+            }
+
+            for (let i = searchedIndex - 1; i >= searchedIndex - 11 + maxRight; i--) {
+                arrayOfIndexesOfVisibleMonths.unshift(i);
+            }
         }
 
-        console.log(searchedIndex);
+        selectedMonthLeftIndex = searchedIndex - 1;
+        selectedMonthRightIndex = searchedIndex;
         this.setState({arrayOfIndexesOfVisibleMonths: arrayOfIndexesOfVisibleMonths});
+        console.log(searchedIndex);
     }
 
-    /**
-     * Returns month's content for rendering
-     *
-     * @state arrayOfMonths
-     * @state arrayOfIndexesOfVisibleMonths
-     */
-    renderMonths() {
-        let arrayOfIndexesOfVisibleMonths = this.state.arrayOfIndexesOfVisibleMonths;
-        let arraySize = arrayOfIndexesOfVisibleMonths.length;
-        let followingYear = null;
-        let previousYear = null;
-        let fullContent = [];
-        let previousYearContent = [];
-        let betweenYearsContent = [];
-        let followingYearContent = [];
+    pushBetweenMonthBlock(content, id) {
+        let timing = [];
 
-        for (let i = arraySize - 1; i >= 0; i--) {
-            let index = arrayOfIndexesOfVisibleMonths[i];
-            let id = index + "-" + (index + 1);
-            let object = this.state.arrayOfMonths[index];
+        timing.push(<div className={'betweenMonth'} id={id} onClick={() => this.selectMonths(id)}/>);
+        timing.push(<div className={'border'} id={id + "b"}/>);
+        content.push(<div className={'betweenMonthBorderBlock'}>{timing}</div>);
+    }
 
-            // sets the years
-            if (previousYear === null) {
-                previousYear = object.year;
-            } else if (previousYear !== object.year) {
-                followingYear = object.year;
-            }
+    trimTheContent(content, year, isPreviousYear) {
+        let timing = [];
+        let nameOfTheYear;
+        let nameOfTheBlock;
 
-            if (object.year === previousYear) { // sets the previous year content
-                previousYearContent.push(<div className={'month'} id={index}>{object.month.substr(0, 3)}</div>);
+        if (isPreviousYear) {
+            nameOfTheYear = 'thePreviousYear';
+        } else {
+            nameOfTheYear = 'theFollowingYear';
+        }
+        nameOfTheBlock = nameOfTheYear + 'Block';
 
-                if (object.number !== 12) {
-                    previousYearContent.push(<div className={'betweenMonth'} id={id} onClick={() => this.pip(id)}/>);
-                } else {
-                    let timing = previousYearContent;
-                    previousYearContent = [];
+        timing.push(<div className={nameOfTheYear}>{year}</div>);
+        timing.push(<div className={'lineOfMonths'}>{content}</div>);
 
-                    previousYearContent.push(<div className={'thePreviousYear'}>{previousYear}</div>);
-                    previousYearContent.push(<div className={'lineOfMonths'}>{timing}</div>);
+        content = [];
+        content.push(<div className={nameOfTheBlock}>{timing}</div>);
 
-                    timing = previousYearContent;
-                    previousYearContent = [];
+        return content;
+    }
 
-                    previousYearContent.push(<div className={'thePreviousYearBlock'}>{timing}</div>);
+    changeBorderVisibilityClasses(id) {
+        let borderElement = document.getElementById(id);
 
+        if (borderElement.classList.contains("border-visible")) {
+            borderElement.classList.remove("border-visible");
+            borderElement.classList.add("border");
+        } else {
+            borderElement.classList.remove("border");
+            borderElement.classList.add("border-visible");
+        }
+    }
 
-                    betweenYearsContent.push(<div className={'between'}/>); // sets between year content
-                    betweenYearsContent.push(<div className={'betweenMonth'} id={id} onClick={() => this.pip(id)}/>);
+    changeMonthColorClasses(id) {
+        let monthLeftElement = document.getElementById(id);
+        let monthRightElement = document.getElementById(id + 1);
 
-                    timing = betweenYearsContent;
-                    betweenYearsContent = [];
+        if (monthLeftElement.classList.contains("month")) {
+            monthLeftElement.classList.remove("month");
+            monthLeftElement.classList.add("month-selected");
+            monthRightElement.classList.remove("month");
+            monthRightElement.classList.add("month-selected");
+        } else {
+            monthLeftElement.classList.remove("month-selected");
+            monthLeftElement.classList.add("month");
+            monthRightElement.classList.remove("month-selected");
+            monthRightElement.classList.add("month");
+        }
+    }
 
-                    betweenYearsContent.push(<div className={'betweenYears'}>{timing}</div>);
-                }
-            } else if (object.year === followingYear) { // sets the following year content
-                followingYearContent.push(<div className={'month'} id={index}>{object.month.substr(0, 3)}</div>);
+    selectMonths(id) {
+        this.changeBorderVisibilityClasses(selectedMonthLeftIndex + "-" + selectedMonthRightIndex + "b");
+        this.changeMonthColorClasses(selectedMonthLeftIndex);
 
-                if (i !== 0) {
-                    followingYearContent.push(<div className={'betweenMonth'} id={id} onClick={() => this.pip(id)}/>);
-                } else {
-                    let timing = followingYearContent;
-                    followingYearContent = [];
+        if (id !== undefined) {
+            selectedMonthLeftIndex = parseInt(id.substr(0, id.indexOf("-")));
+            selectedMonthRightIndex = selectedMonthLeftIndex + 1;
 
-                    followingYearContent.push(<div className={'theFollowingYear'}>{followingYear}</div>);
-                    followingYearContent.push(<div className={'lineOfMonths'}>{timing}</div>);
-
-                    timing = followingYearContent;
-                    followingYearContent = [];
-
-                    followingYearContent.push(<div className={'theFollowingYearBlock'}>{timing}</div>);
-                }
-            }
+            this.changeBorderVisibilityClasses(id + "b");
+            this.changeMonthColorClasses(selectedMonthLeftIndex);
         }
 
-        fullContent.push(previousYearContent);
-        fullContent.push(betweenYearsContent);
-        fullContent.push(followingYearContent);
-
-        return fullContent;
-    }
-
-    pip(value) {
-        console.log(value);
-    }
-
-    render() {
-        let content = this.renderMonths();
-
-        return (
-            <div className={'dateIntervalPickerOpened'}>
-                <div className={'dateIntervalPickerOpened__content'}>
-                    <div className={'line'}>
-                        {content}
-                    </div>
-                    <div className={'calendar'}/>
-                </div>
-            </div>
-        );
+        console.log(id);
     }
 }
-
 
 DateIntervalPickerOpened.propTypes = {
     dateFrom: PropTypes.instanceOf(Date),
@@ -237,5 +330,5 @@ DateIntervalPickerOpened.propTypes = {
 
 DateIntervalPickerOpened.defaultProps = {
     dateFrom: new Date(),
-    dateTo: new Date("06/22/18")
+    dateTo: new Date("05/15/18")
 };
