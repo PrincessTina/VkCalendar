@@ -1,38 +1,37 @@
 @border-color: #dedfe1;
+@content-width: 421px;
+@white-window-width: 474px;
+@month-width: 24.5px;
+@selected-month-width: 24.5px;
+@between-months-width: 11px;
+@start-position: -174.5px;
 
 .line {
   display: flex;
 }
 
+.year(@margin) {
+  height: 14px;
+  width: 25px;
+  position: absolute;
+  bottom: 22px;
+  margin-left: @margin;
+}
+
 .header {
   .line;
   position: absolute;
-  left: -176px;
+  left: @start-position;
 }
 
-.header-animation(@left) {
+.header-animation(@k) {
   .header;
-  left: @left;
+  left: (@start-position + (@selected-month-width + @between-months-width) * @k);
   transition: all 400ms ease-out;
 }
 
-.lineOfMonths(@color) {
-  .line;
-
-  .month {
-    color: @color;
-    width: 23px;
-    text-align: center;
-  }
-
-  .month-selected {
-    .month;
-    font-weight: 700;
-  }
-}
-
 .dateIntervalPickerOpened {
-  width: 474px;
+  width: @white-window-width;
   height: 247px;
   background-color: white;
   box-shadow: 0 1px 4px 0 @border-color * 0.5;
@@ -45,41 +44,45 @@
     @usualColor: #000000; // color of the usual days
     @highlightColor: #597da3; // color of the selected day range
 
-    width: 419px;
+    width: @content-width;
     height: 20px;
     position: relative;
     overflow: hidden;
     font-size: 11.2px;
-    padding: 20px 0 20px 0;
-    margin: 0 27.5px 0 27.5px;
+    padding: 40px 0 20px 0;
+    margin: 0 (@white-window-width - @content-width) * 0.5px 0 (@white-window-width - @content-width) * 0.5px;
 
-    .thePreviousYear {
-      width: 23px;
+    .decYear {
+      .year(-1px);
       color: @grayColor;
-      text-align: right;
-      padding-bottom: 6px;
     }
 
-    .theFollowingYear {
-      width: 23px;
+    .janYear {
+      .year(2px);
       color: @grayColor;
-      text-align: left;
-      padding-bottom: 6px;
     }
 
-    .lineOfMonthsLeft {
-      .lineOfMonths(@blueColor);
-    }
+    .lineOfMonths {
+      .line;
 
-    .lineOfMonthsRight {
-      .lineOfMonths(@blueColor);
+      .month {
+        color: @blueColor;
+        width: @month-width;
+        text-align: center;
+      }
+
+      .month-selected {
+        .month;
+        width: @selected-month-width;
+        font-weight: 700;
+      }
     }
 
     .border {
-      width: 65px;
+      width: 68px;
       height: 2px;
       background-color: @monthBorderColor;
-      margin: 0 -26px;
+      margin: 0 -28.5px;
       visibility: hidden;
       position: absolute;
     }
@@ -92,8 +95,7 @@
 }
 
 .between {
-  padding-left: 7px;
-  padding-right: 6px;
+  width: @between-months-width;
   height: 19.44px;
 }
 
@@ -107,42 +109,42 @@
 }
 
 .header-left-5 {
-  .header-animation(4px)
+  .header-animation(5px)
 }
 
 .header-left-4 {
-  .header-animation(-32px)
+  .header-animation(4px)
 }
 
 .header-left-3 {
-  .header-animation(-68px)
+  .header-animation(3px)
 }
 
 .header-left-2 {
-  .header-animation(-104px)
+  .header-animation(2px)
 }
 
 .header-left-1 {
-  .header-animation(-140px)
+  .header-animation(1px)
 }
 
 .header-right-5 {
-  .header-animation(-356px)
+  .header-animation(-5px)
 }
 
 .header-right-4 {
-  .header-animation(-320px)
+  .header-animation(-4px)
 }
 
 .header-right-3 {
-  .header-animation(-284px)
+  .header-animation(-3px)
 }
 
 .header-right-2 {
-  .header-animation(-248px)
+  .header-animation(-2px)
 }
 
 .header-right-1 {
-  .header-animation(-212px)
+  .header-animation(-1px)
 }
 

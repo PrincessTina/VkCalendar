@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import '../../css/dateIntervalPickerOpened.less';
 
-window.test = 10000;
-
 export default class DateIntervalPickerOpened extends React.Component {
     constructor(props) {
         super(props);
@@ -29,17 +27,13 @@ export default class DateIntervalPickerOpened extends React.Component {
     }
 
     render() {
-        const content = this.renderMonths();
-        const leftAdditional = this.renderAdditionalMonths(true);
-        const rightAdditional = this.renderAdditionalMonths(false);
+        const content = this.renderFullMonthsContent();
 
         return (
             <div className={'dateIntervalPickerOpened'}>
                 <div className={'dateIntervalPickerOpened__content'}>
                     <div className={this.state.headerAnimationClass}>
-                        {leftAdditional}
                         {content}
-                        {rightAdditional}
                     </div>
                     <div className={'calendar'}/>
                 </div>
@@ -47,97 +41,33 @@ export default class DateIntervalPickerOpened extends React.Component {
         );
     }
 
-    /**
-     * Returns month's content for rendering
-     *
-     * @state arrayOfMonths
-     * @state arrayOfIndexesOfVisibleMonths
-     * @state selectedMonthLeftIndex
-     * @state selectedMonthRightIndex
-     *
-     * @returns {Array}
-     */
-    renderMonths() {
-        const arrayOfIndexesOfVisibleMonths = this.state.arrayOfIndexesOfVisibleMonths;
-        const arraySize = arrayOfIndexesOfVisibleMonths.length;
-        let followingYear = null;
-        let previousYear = null;
-        let fullContent = [];
-        let previousYearContent = [];
-        let betweenYearsContent = [];
-        let followingYearContent = [];
+    checkMonth(fullContent, object, index, monthClass) {
+        let timing = [];
 
-        for (let i = 0; i < arraySize; i++) {
-            const index = arrayOfIndexesOfVisibleMonths[i];
-            const id = index + "-" + (index + 1);
-            const monthClass = (index === this.state.selectedMonthLeftIndex ||
-                index === this.state.selectedMonthRightIndex) ? 'month-selected' : 'month';
-            const object = this.state.arrayOfMonths[index];
+        if (object.number === 12) {
+            timing.push(<div className={'decYear'}>{object.year}</div>);
+            timing.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
 
-            // sets the years
-            if (previousYear === null) {
-                previousYear = object.year;
-            } else if (previousYear !== object.year) {
-                followingYear = object.year;
-            }
+            fullContent.push(<div className={'decYearBlock'}>{timing}</div>);
+        } else if (object.number === 1) {
+            timing.push(<div className={'janYear'}>{object.year}</div>);
+            timing.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
 
-            if (object.year === previousYear) { // sets the previous year content
-                previousYearContent.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
-
-                if (object.number !== 12) {
-                    this.pushBetweenMonthBlock(previousYearContent, id);
-                } else {
-                    let timing;
-
-                    previousYearContent = this.getLeveledContent(previousYearContent, previousYear, true, false);
-
-                    betweenYearsContent.push(<div className={'between'}/>); // sets between year content
-                    this.pushBetweenMonthBlock(betweenYearsContent, id);
-
-                    timing = betweenYearsContent;
-
-                    betweenYearsContent = [];
-                    betweenYearsContent.push(<div className={'betweenYears'}>{timing}</div>);
-                }
-            } else if (object.year === followingYear) { // sets the following year content
-                followingYearContent.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
-
-                if (i !== arraySize - 1) {
-                    this.pushBetweenMonthBlock(followingYearContent, id);
-                } else {
-                    followingYearContent = this.getLeveledContent(followingYearContent, followingYear, false, false);
-                }
-            }
+            fullContent.push(<div className={'janYearBlock'}>{timing}</div>);
+        } else {
+            fullContent.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
         }
-
-        fullContent.push(previousYearContent);
-        fullContent.push(betweenYearsContent);
-        fullContent.push(followingYearContent);
-
-        return fullContent;
     }
 
-    /**
-     * @param isLeftAdditionalMonths
-     *
-     * @state arrayOfIndexesLeftAdditionalMonths
-     * @state arrayOfIndexesRightAdditionalMonths
-     * @state arrayOfMonths
-     *
-     * @returns {Array}
-     */
-    renderAdditionalMonths(isLeftAdditionalMonths) {
+    addAdditionalMonthsContent(isLeftAdditionalMonths) {
         const arraySize = 5;
         const arrayOfIndexesOfAdditionalMonths = (isLeftAdditionalMonths)
             ? this.state.arrayOfIndexesLeftAdditionalMonths : this.state.arrayOfIndexesRightAdditionalMonths;
         let fullContent = [];
-        let additionalContent = [];
-        let betweenYearsContent = [];
 
         for (let i = 0; i < arraySize; i++) {
             const index = arrayOfIndexesOfAdditionalMonths[i];
             const id = index + "-" + (index + 1);
-            const monthClass = 'month';
             let object;
 
             if (index < 0) {
@@ -150,39 +80,40 @@ export default class DateIntervalPickerOpened extends React.Component {
                 object = this.state.arrayOfMonths[index];
             }
 
-            additionalContent.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
+            this.checkMonth(fullContent, object, index, 'month');
 
-            if (i !== arraySize - 1) {
-                this.pushBetweenMonthBlock(additionalContent, id);
-            } else {
-                let timing;
-
-                if (isLeftAdditionalMonths) {
-                    additionalContent = this.getLeveledContent(additionalContent,
-                        <span style={{visibility: "hidden"}}>Null</span>, true, true);
-                } else {
-                    additionalContent = this.getLeveledContent(additionalContent,
-                        <span style={{visibility: "hidden"}}>Null</span>, false, true);
-                }
-
-                betweenYearsContent.push(<div className={'between'}/>); // sets between year content
-                this.pushBetweenMonthBlock(betweenYearsContent, id);
-
-                timing = betweenYearsContent;
-
-                betweenYearsContent = [];
-                betweenYearsContent.push(<div className={'betweenYears'}>{timing}</div>);
+            if (isLeftAdditionalMonths || (!isLeftAdditionalMonths && i !== arraySize - 1)) {
+                this.pushBetweenMonthBlock(fullContent, id);
             }
-
         }
 
-        if (isLeftAdditionalMonths) {
-            fullContent.push(additionalContent);
-            fullContent.push(betweenYearsContent);
-        } else {
-            fullContent.push(betweenYearsContent);
-            fullContent.push(additionalContent);
+        return fullContent;
+    }
+
+    renderFullMonthsContent() {
+        const arrayOfIndexesOfVisibleMonths = this.state.arrayOfIndexesOfVisibleMonths;
+        const arraySize = 12;
+        let fullContent = [];
+        let timing;
+
+        fullContent.push(this.addAdditionalMonthsContent(true));
+
+        for (let i = 0; i < arraySize; i++) {
+            const index = arrayOfIndexesOfVisibleMonths[i];
+            const id = index + "-" + (index + 1);
+            const monthClass = (index === this.state.selectedMonthLeftIndex ||
+                index === this.state.selectedMonthRightIndex) ? 'month-selected' : 'month';
+            const object = this.state.arrayOfMonths[index];
+
+            this.checkMonth(fullContent, object, index, monthClass);
+            this.pushBetweenMonthBlock(fullContent, id);
         }
+
+        fullContent.push(this.addAdditionalMonthsContent(false));
+
+        timing = fullContent;
+        fullContent = [];
+        fullContent.push(<div className={'lineOfMonths'}>{timing}</div>);
 
         return fullContent;
     }
@@ -202,33 +133,6 @@ export default class DateIntervalPickerOpened extends React.Component {
         timing.push(<div className={'betweenMonth'} id={id} onClick={() => this.selectMonths(id)}/>);
         timing.push(<div className={borderClass} id={id + "b"}/>);
         content.push(<div className={'betweenMonthBorderBlock'}>{timing}</div>);
-    }
-
-    /**
-     * @param content
-     * @param year
-     * @param isPreviousYear
-     * @param isAdditional
-     *
-     * @returns {Array}
-     */
-    getLeveledContent(content, year, isPreviousYear, isAdditional) {
-        const nameOfTheYear = (isPreviousYear) ? 'thePreviousYear' : 'theFollowingYear';
-        const nameOfTheBlock = (isAdditional) ? nameOfTheYear + 'AdditionalBlock' : nameOfTheYear + 'Block';
-        let timing = [];
-
-        //timing.push(<div className={nameOfTheYear}>{year}</div>);
-
-        if (isPreviousYear) {
-            timing.push(<div className={'lineOfMonthsLeft'}>{content}</div>);
-        } else {
-            timing.push(<div className={'lineOfMonthsRight'}>{content}</div>);
-        }
-
-        content = [];
-        content.push(<div className={nameOfTheBlock}>{timing}</div>);
-
-        return content;
     }
 
     /**
@@ -455,7 +359,7 @@ export default class DateIntervalPickerOpened extends React.Component {
                     arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
                 });
                 console.log("animation ended");
-            }, window.test, this);
+            }, 400, this);
         }
 
         console.log(id);
