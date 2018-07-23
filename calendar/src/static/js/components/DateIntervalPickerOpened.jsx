@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import '../../css/dateIntervalPickerOpened.less';
 
+window.test = 10000;
+
 export default class DateIntervalPickerOpened extends React.Component {
     constructor(props) {
         super(props);
@@ -453,7 +455,7 @@ export default class DateIntervalPickerOpened extends React.Component {
                     arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
                 });
                 console.log("animation ended");
-            }, 10000, this);
+            }, window.test, this);
         }
 
         console.log(id);
