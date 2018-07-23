@@ -4,6 +4,34 @@
   display: flex;
 }
 
+.header {
+  .line;
+  position: absolute;
+  left: -176px;
+}
+
+.header-animation(@left) {
+  .header;
+  left: @left;
+  transition: all 400ms ease-out;
+}
+
+.lineOfMonths(@align, @color) {
+  .line;
+  text-align-last: @align;
+
+  .month {
+    color: @color;
+    width: 23px;
+    text-align: center;
+  }
+
+  .month-selected {
+    .month;
+    font-weight: 700;
+  }
+}
+
 .dateIntervalPickerOpened {
   width: 474px;
   height: 247px;
@@ -18,8 +46,13 @@
     @usualColor: #000000; // color of the usual days
     @highlightColor: #597da3; // color of the selected day range
 
+    width: 427px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
     font-size: 11.2px;
-    padding: 20px 29.5px 20px 29.5px;
+    padding: 20px 0 20px 0;
+    margin-left: 26px;
 
     .thePreviousYear {
       color: @grayColor;
@@ -33,27 +66,21 @@
       padding-bottom: 6px;
     }
 
-    .lineOfMonths {
-      .line;
+    .lineOfMonthsLeft {
+      .lineOfMonths(end, @blueColor);
+    }
 
-      .month {
-        color: @blueColor;
-        width: 21px;
-        text-align: center;
-      }
-
-      .month-selected {
-        .month;
-        font-weight: 700;
-      }
+    .lineOfMonthsRight {
+      .lineOfMonths(start, @blueColor);
     }
 
     .border {
       width: 65px;
       height: 2px;
       background-color: @monthBorderColor;
-      margin: 0 -25px;
+      margin: 0 -26px;
       visibility: hidden;
+      position: absolute;
     }
 
     .border-visible {
@@ -64,8 +91,8 @@
 }
 
 .between {
-  padding-left: 8px;
-  padding-right: 7px;
+  padding-left: 7px;
+  padding-right: 6px;
   height: 19.44px;
 }
 
@@ -77,3 +104,44 @@
 .betweenMonth:hover {
   cursor: pointer;
 }
+
+.header-left-5 {
+  .header-animation(4px)
+}
+
+.header-left-4 {
+  .header-animation(-32px)
+}
+
+.header-left-3 {
+  .header-animation(-68px)
+}
+
+.header-left-2 {
+  .header-animation(-104px)
+}
+
+.header-left-1 {
+  .header-animation(-140px)
+}
+
+.header-right-5 {
+  .header-animation(-356px)
+}
+
+.header-right-4 {
+  .header-animation(-320px)
+}
+
+.header-right-3 {
+  .header-animation(-284px)
+}
+
+.header-right-2 {
+  .header-animation(-248px)
+}
+
+.header-right-1 {
+  .header-animation(-212px)
+}
+
