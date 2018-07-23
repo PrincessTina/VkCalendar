@@ -217,7 +217,7 @@ export default class DateIntervalPickerOpened extends React.Component {
         const nameOfTheBlock = (isAdditional) ? nameOfTheYear + 'AdditionalBlock' : nameOfTheYear + 'Block';
         let timing = [];
 
-        timing.push(<div className={nameOfTheYear}>{year}</div>);
+        //timing.push(<div className={nameOfTheYear}>{year}</div>);
 
         if (isPreviousYear) {
             timing.push(<div className={'lineOfMonthsLeft'}>{content}</div>);

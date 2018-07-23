@@ -16,9 +16,8 @@
   transition: all 400ms ease-out;
 }
 
-.lineOfMonths(@align, @color) {
+.lineOfMonths(@color) {
   .line;
-  text-align-last: @align;
 
   .month {
     color: @color;
@@ -46,32 +45,34 @@
     @usualColor: #000000; // color of the usual days
     @highlightColor: #597da3; // color of the selected day range
 
-    width: 427px;
+    width: 419px;
     height: 20px;
     position: relative;
     overflow: hidden;
     font-size: 11.2px;
     padding: 20px 0 20px 0;
-    margin-left: 26px;
+    margin: 0 27.5px 0 27.5px;
 
     .thePreviousYear {
+      width: 23px;
       color: @grayColor;
       text-align: right;
       padding-bottom: 6px;
     }
 
     .theFollowingYear {
+      width: 23px;
       color: @grayColor;
       text-align: left;
       padding-bottom: 6px;
     }
 
     .lineOfMonthsLeft {
-      .lineOfMonths(end, @blueColor);
+      .lineOfMonths(@blueColor);
     }
 
     .lineOfMonthsRight {
-      .lineOfMonths(start, @blueColor);
+      .lineOfMonths(@blueColor);
     }
 
     .border {
