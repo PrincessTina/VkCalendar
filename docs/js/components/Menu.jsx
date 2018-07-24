@@ -1,6 +1,6 @@
 import React from "react";
 
-import DateIntervalPickerHidden from '../components/DateIntervalPickerHidden.jsx';
+import DateIntervalPicker from './DateIntervalPicker.jsx';
 
 import '../../css/menu.less';
 
@@ -30,7 +30,7 @@ export default class Menu extends React.Component {
                 <div className={'menu__title'}>
                     Временной интервал
                 </div>
-                <DateIntervalPickerHidden/>
+                <DateIntervalPicker/>
                 <div className={'menu__title'}>
                     Университет
                 </div>

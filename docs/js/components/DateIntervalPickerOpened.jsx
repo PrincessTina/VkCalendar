@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import Calendar from './Calendar.jsx';
+
 import '../../css/dateIntervalPickerOpened.less';
 
 export default class DateIntervalPickerOpened extends React.Component {
@@ -35,12 +37,20 @@ export default class DateIntervalPickerOpened extends React.Component {
                     <div className={this.state.headerAnimationClass}>
                         {content}
                     </div>
-                    <div className={'calendar'}/>
+                    <Calendar selectedMonthLeftIndex={this.state.selectedMonthLeftIndex}
+                              selectedMonthRightIndex={this.state.selectedMonthRightIndex}
+                              arrayOfMonths={this.state.arrayOfMonths}/>
                 </div>
             </div>
         );
     }
 
+    /**
+     * @param fullContent
+     * @param object
+     * @param index
+     * @param monthClass
+     */
     checkMonth(fullContent, object, index, monthClass) {
         let timing = [];
 
@@ -59,6 +69,15 @@ export default class DateIntervalPickerOpened extends React.Component {
         }
     }
 
+    /**
+     * @param isLeftAdditionalMonths
+     *
+     * @state arrayOfIndexesLeftAdditionalMonths
+     * @state arrayOfIndexesRightAdditionalMonths
+     * @state arrayOfMonths
+     *
+     * @returns {Array}
+     */
     addAdditionalMonthsContent(isLeftAdditionalMonths) {
         const arraySize = 5;
         const arrayOfIndexesOfAdditionalMonths = (isLeftAdditionalMonths)
@@ -90,6 +109,14 @@ export default class DateIntervalPickerOpened extends React.Component {
         return fullContent;
     }
 
+    /**
+     * @state arrayOfIndexesOfVisibleMonths
+     * @state arrayOfMonths
+     * @state selectedMonthRightIndex
+     * @state selectedMonthLeftIndex
+     *
+     * @returns {Array}
+     */
     renderFullMonthsContent() {
         const arrayOfIndexesOfVisibleMonths = this.state.arrayOfIndexesOfVisibleMonths;
         const arraySize = 12;
@@ -331,7 +358,7 @@ export default class DateIntervalPickerOpened extends React.Component {
             this.getFilledArrayOfIndexesOfVisibleMonths(this.state.arrayOfMonths, selectedMonthRightIndex);
         const {arrayOfIndexesLeftAdditionalMonths, arrayOfIndexesRightAdditionalMonths} =
             this.getFilledArrayOfIndexesOfAdditionalMonths(this.state.arrayOfMonths, arrayOfIndexesOfVisibleMonths);
-        const headerAnimationClass = this.getCalculatedAnimationClass(selectedMonthLeftIndex);
+        const headerAnimationClass = this.getAnimationClass(selectedMonthLeftIndex);
 
         // animation count, учесть, что анимация идет не всегда (когда границы)
 
@@ -372,7 +399,7 @@ export default class DateIntervalPickerOpened extends React.Component {
      *
      * @returns {string, undefined}
      */
-    getCalculatedAnimationClass(selectedMonthLeftIndex) {
+    getAnimationClass(selectedMonthLeftIndex) {
         const centerLeftMonth = this.state.arrayOfIndexesOfVisibleMonths[5];
         const desiredStepSize = selectedMonthLeftIndex - centerLeftMonth;
         let possibleStepSize;
@@ -435,9 +462,4 @@ export default class DateIntervalPickerOpened extends React.Component {
 DateIntervalPickerOpened.propTypes = {
     dateFrom: PropTypes.instanceOf(Date),
     dateTo: PropTypes.instanceOf(Date),
-};
-
-DateIntervalPickerOpened.defaultProps = {
-    dateFrom: new Date(),
-    dateTo: new Date("01/15/17")
 };
