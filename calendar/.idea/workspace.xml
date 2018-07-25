@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateIntervalPicker.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DateIntervalPicker.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-2">
@@ -50,43 +50,6 @@
                 <element signature="e#3660#3722#0" expanded="false" />
                 <element signature="e#4107#4171#0" expanded="false" />
                 <element signature="e#4192#4313#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DateIntervalPickerOpened.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#2161#2222#0" expanded="false" />
-                <element signature="e#2247#2288#0" expanded="false" />
-                <element signature="e#2294#2397#0" expanded="false" />
-                <element signature="e#2453#3197#0" expanded="false" />
-                <element signature="e#3203#3416#0" expanded="false" />
-                <element signature="e#3472#4447#0" expanded="false" />
-                <element signature="e#4453#4642#0" expanded="false" />
-                <element signature="e#4673#5666#0" expanded="false" />
-                <element signature="e#5672#5824#0" expanded="false" />
-                <element signature="e#5864#6304#0" expanded="false" />
-                <element signature="e#6310#6416#0" expanded="false" />
-                <element signature="e#6446#8793#0" expanded="false" />
-                <element signature="e#8799#9041#0" expanded="false" />
-                <element signature="e#9105#9923#0" expanded="false" />
-                <element signature="e#9929#10031#0" expanded="false" />
-                <element signature="e#10109#11618#0" expanded="false" />
-                <element signature="e#11712#12520#0" expanded="false" />
-                <element signature="e#12526#12992#0" expanded="false" />
-                <element signature="e#13014#14952#0" expanded="false" />
-                <element signature="e#14958#15010#0" expanded="false" />
-                <element signature="e#15035#15539#0" expanded="false" />
-                <element signature="e#15545#15687#0" expanded="false" />
-                <element signature="e#15734#16404#0" expanded="false" />
-                <element signature="e#16410#16589#0" expanded="false" />
-                <element signature="e#16628#17416#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -326,7 +289,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build dev version">
+  <component name="RunManager" selected="npm.make new github page">
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts>
@@ -386,12 +349,12 @@
       <workItem from="1531853630764" duration="6469000" />
       <workItem from="1531911430602" duration="8231000" />
       <workItem from="1531922459265" duration="5593000" />
-      <workItem from="1531935631760" duration="217948000" />
+      <workItem from="1531935631760" duration="218176000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238241000" />
+    <option name="totallyTimeSpent" value="238469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -404,7 +367,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32801822" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32801822" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -756,25 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#1829#1891#0" expanded="false" />
-            <element signature="e#1918#2023#0" expanded="false" />
-            <element signature="e#2029#2132#0" expanded="false" />
-            <element signature="e#2151#2889#0" expanded="false" />
-            <element signature="e#2895#2998#0" expanded="false" />
-            <element signature="e#3017#3654#0" expanded="false" />
-            <element signature="e#3660#3722#0" expanded="false" />
-            <element signature="e#4107#4171#0" expanded="false" />
-            <element signature="e#4192#4313#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -806,6 +750,25 @@
             <element signature="e#15734#16404#0" expanded="false" />
             <element signature="e#16410#16589#0" expanded="false" />
             <element signature="e#16628#17416#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1829#1891#0" expanded="false" />
+            <element signature="e#1918#2023#0" expanded="false" />
+            <element signature="e#2029#2132#0" expanded="false" />
+            <element signature="e#2151#2889#0" expanded="false" />
+            <element signature="e#2895#2998#0" expanded="false" />
+            <element signature="e#3017#3654#0" expanded="false" />
+            <element signature="e#3660#3722#0" expanded="false" />
+            <element signature="e#4107#4171#0" expanded="false" />
+            <element signature="e#4192#4313#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -25,6 +25,8 @@ export default class DateIntervalPickerOpened extends React.Component {
             arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
         };
 
+        this.startRendering = true;
+
         this.selectMonths = this.selectMonths.bind(this);
     }
 
@@ -39,10 +41,20 @@ export default class DateIntervalPickerOpened extends React.Component {
                     </div>
                     <Calendar selectedMonthLeftIndex={this.state.selectedMonthLeftIndex}
                               selectedMonthRightIndex={this.state.selectedMonthRightIndex}
-                              arrayOfMonths={this.state.arrayOfMonths}/>
+                              dateTo={this.props.dateTo}
+                              dateFrom={this.props.dateFrom}
+                              arrayOfMonths={this.state.arrayOfMonths}
+                              closedWindowFunction={this.props.closeWindowFunction}/>
                 </div>
             </div>
         );
+    }
+
+    /**
+     * Sets calendar's area visible at start time
+     */
+    componentDidMount() {
+        this.setChildAnimation();
     }
 
     /**
@@ -322,8 +334,7 @@ export default class DateIntervalPickerOpened extends React.Component {
         let arrayOfIndexesRightAdditionalMonths = [];
 
         for (let i = leftLimit; i > leftLimit - 5; i--) {
-            const index = (arrayOfMonths[i] !== undefined) ? i : -i;
-            arrayOfIndexesLeftAdditionalMonths.unshift(index);
+            arrayOfIndexesLeftAdditionalMonths.unshift(i);
         }
 
         for (let i = rightLimit; i < rightLimit + 5; i++) {
@@ -360,7 +371,7 @@ export default class DateIntervalPickerOpened extends React.Component {
             this.getFilledArrayOfIndexesOfAdditionalMonths(this.state.arrayOfMonths, arrayOfIndexesOfVisibleMonths);
         const headerAnimationClass = this.getAnimationClass(selectedMonthLeftIndex);
 
-        // animation count, учесть, что анимация идет не всегда (когда границы)
+        this.setChildAnimation();
 
         if (headerAnimationClass === undefined) {
             this.setState({
@@ -390,6 +401,26 @@ export default class DateIntervalPickerOpened extends React.Component {
         }
 
         console.log(id);
+    }
+
+    /**
+     * Sets animation at calendar's area
+     */
+    setChildAnimation() {
+        if (document.getElementsByClassName('calendarArea')) {
+            let area = document.getElementsByClassName('calendarArea')[0];
+
+            if (!this.startRendering) {
+                area.classList.remove('animation', 'opacity');
+
+                setTimeout(function () {
+                    area.classList.add('animation');
+                }, 1);
+            } else {
+                area.classList.add('opacity');
+                this.startRendering = false;
+            }
+        }
     }
 
     /**
@@ -462,4 +493,5 @@ export default class DateIntervalPickerOpened extends React.Component {
 DateIntervalPickerOpened.propTypes = {
     dateFrom: PropTypes.instanceOf(Date),
     dateTo: PropTypes.instanceOf(Date),
+    closeWindowFunction: PropTypes.func
 };
