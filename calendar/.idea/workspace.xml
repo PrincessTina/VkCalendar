@@ -27,30 +27,94 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+            <state relative-caret-position="126">
+              <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calendar.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/static/js/components/Calendar.jsx">
+      <file leaf-file-name="DateIntervalPicker.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+            <state relative-caret-position="-2">
+              <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#758#854#0" expanded="false" />
-                <element signature="e#888#2980#0" expanded="false" />
-                <element signature="e#2986#3048#0" expanded="false" />
-                <element signature="e#3075#3687#0" expanded="false" />
-                <element signature="e#3693#3833#0" expanded="false" />
-                <element signature="e#3861#4227#0" expanded="false" />
-                <element signature="e#4233#4296#0" expanded="false" />
-                <element signature="e#4318#4551#0" expanded="false" />
-                <element signature="e#4557#4655#0" expanded="false" />
-                <element signature="e#4686#5116#0" expanded="false" />
+                <element signature="e#1829#1891#0" expanded="false" />
+                <element signature="e#1918#2023#0" expanded="false" />
+                <element signature="e#2029#2132#0" expanded="false" />
+                <element signature="e#2151#2889#0" expanded="false" />
+                <element signature="e#2895#2998#0" expanded="false" />
+                <element signature="e#3017#3654#0" expanded="false" />
+                <element signature="e#3660#3722#0" expanded="false" />
+                <element signature="e#4107#4171#0" expanded="false" />
+                <element signature="e#4192#4313#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateIntervalPickerOpened.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#2161#2222#0" expanded="false" />
+                <element signature="e#2247#2288#0" expanded="false" />
+                <element signature="e#2294#2397#0" expanded="false" />
+                <element signature="e#2453#3197#0" expanded="false" />
+                <element signature="e#3203#3416#0" expanded="false" />
+                <element signature="e#3472#4447#0" expanded="false" />
+                <element signature="e#4453#4642#0" expanded="false" />
+                <element signature="e#4673#5666#0" expanded="false" />
+                <element signature="e#5672#5824#0" expanded="false" />
+                <element signature="e#5864#6304#0" expanded="false" />
+                <element signature="e#6310#6416#0" expanded="false" />
+                <element signature="e#6446#8793#0" expanded="false" />
+                <element signature="e#8799#9041#0" expanded="false" />
+                <element signature="e#9105#9923#0" expanded="false" />
+                <element signature="e#9929#10031#0" expanded="false" />
+                <element signature="e#10109#11618#0" expanded="false" />
+                <element signature="e#11712#12520#0" expanded="false" />
+                <element signature="e#12526#12992#0" expanded="false" />
+                <element signature="e#13014#14952#0" expanded="false" />
+                <element signature="e#14958#15010#0" expanded="false" />
+                <element signature="e#15035#15539#0" expanded="false" />
+                <element signature="e#15545#15687#0" expanded="false" />
+                <element signature="e#15734#16404#0" expanded="false" />
+                <element signature="e#16410#16589#0" expanded="false" />
+                <element signature="e#16628#17416#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Calendar.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/static/js/components/Calendar.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="77" column="33" lean-forward="false" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#1181#1515#0" expanded="false" />
+                <element signature="e#1527#1617#0" expanded="false" />
+                <element signature="e#1667#1918#0" expanded="false" />
+                <element signature="e#1924#2087#0" expanded="false" />
+                <element signature="e#2121#6056#0" expanded="false" />
+                <element signature="e#6090#6306#0" expanded="false" />
+                <element signature="e#6358#6854#0" expanded="false" />
+                <element signature="e#6885#6924#0" expanded="false" />
+                <element signature="e#6930#6992#0" expanded="false" />
+                <element signature="e#7019#7631#0" expanded="false" />
+                <element signature="e#7637#7777#0" expanded="false" />
+                <element signature="e#7805#8171#0" expanded="false" />
+                <element signature="e#8177#8240#0" expanded="false" />
+                <element signature="e#8262#8495#0" expanded="false" />
+                <element signature="e#8501#8599#0" expanded="false" />
+                <element signature="e#8630#9064#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -59,8 +123,8 @@
       <file leaf-file-name="calendar.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/static/css/calendar.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="382">
+              <caret line="99" column="13" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -72,6 +136,7 @@
     <findStrings>
       <find>compila</find>
       <find>selectedMonthLeftIndex</find>
+      <find>DateFr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,14 +160,14 @@
         <option value="$PROJECT_DIR$/src/static/index.html" />
         <option value="$PROJECT_DIR$/src/static/css/dateIntervalPickerHidden.less" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerHidden.jsx" />
-        <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerFull.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerMini.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/Menu.jsx" />
         <option value="$PROJECT_DIR$/src/static/css/dateIntervalPickerOpened.less" />
-        <option value="$PROJECT_DIR$/src/static/css/calendar.less" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/Calendar.jsx" />
+        <option value="$PROJECT_DIR$/src/static/css/calendar.less" />
+        <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx" />
       </list>
     </option>
   </component>
@@ -321,12 +386,12 @@
       <workItem from="1531853630764" duration="6469000" />
       <workItem from="1531911430602" duration="8231000" />
       <workItem from="1531922459265" duration="5593000" />
-      <workItem from="1531935631760" duration="180518000" />
+      <workItem from="1531935631760" duration="217948000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200811000" />
+    <option name="totallyTimeSpent" value="238241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -338,12 +403,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32801822" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955848" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39863327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -392,7 +457,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -643,92 +708,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/css/dateIntervalPickerOpened.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
+        <state relative-caret-position="765">
           <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1316">
-          <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-          <folding>
-            <element signature="e#1922#2025#0" expanded="false" />
-            <element signature="e#2081#2825#0" expanded="false" />
-            <element signature="e#2831#3044#0" expanded="false" />
-            <element signature="e#3100#4075#0" expanded="false" />
-            <element signature="e#4081#4270#0" expanded="false" />
-            <element signature="e#4301#5294#0" expanded="false" />
-            <element signature="e#5300#5452#0" expanded="false" />
-            <element signature="e#5492#5932#0" expanded="false" />
-            <element signature="e#5938#6044#0" expanded="false" />
-            <element signature="e#6074#8421#0" expanded="false" />
-            <element signature="e#8427#8669#0" expanded="false" />
-            <element signature="e#8733#9551#0" expanded="false" />
-            <element signature="e#9557#9659#0" expanded="false" />
-            <element signature="e#9737#11246#0" expanded="false" />
-            <element signature="e#11340#12221#0" expanded="false" />
-            <element signature="e#12227#12693#0" expanded="false" />
-            <element signature="e#12715#14699#0" expanded="false" />
-            <element signature="e#14705#14847#0" expanded="false" />
-            <element signature="e#14894#15564#0" expanded="false" />
-            <element signature="e#15570#15749#0" expanded="false" />
-            <element signature="e#15788#16576#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#1664#1767#0" expanded="false" />
-            <element signature="e#1786#2524#0" expanded="false" />
-            <element signature="e#2530#2633#0" expanded="false" />
-            <element signature="e#2652#3289#0" expanded="false" />
-            <element signature="e#3295#3357#0" expanded="false" />
-            <element signature="e#3407#3696#0" expanded="false" />
-            <element signature="e#3703#3767#0" expanded="false" />
-            <element signature="e#3788#3909#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/static/css/calendar.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="382">
+          <caret line="99" column="13" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/components/Calendar.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        <state relative-caret-position="459">
+          <caret line="77" column="33" lean-forward="false" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#758#854#0" expanded="false" />
-            <element signature="e#888#2980#0" expanded="false" />
-            <element signature="e#2986#3048#0" expanded="false" />
-            <element signature="e#3075#3687#0" expanded="false" />
-            <element signature="e#3693#3833#0" expanded="false" />
-            <element signature="e#3861#4227#0" expanded="false" />
-            <element signature="e#4233#4296#0" expanded="false" />
-            <element signature="e#4318#4551#0" expanded="false" />
-            <element signature="e#4557#4655#0" expanded="false" />
-            <element signature="e#4686#5116#0" expanded="false" />
+            <element signature="e#1181#1515#0" expanded="false" />
+            <element signature="e#1527#1617#0" expanded="false" />
+            <element signature="e#1667#1918#0" expanded="false" />
+            <element signature="e#1924#2087#0" expanded="false" />
+            <element signature="e#2121#6056#0" expanded="false" />
+            <element signature="e#6090#6306#0" expanded="false" />
+            <element signature="e#6358#6854#0" expanded="false" />
+            <element signature="e#6885#6924#0" expanded="false" />
+            <element signature="e#6930#6992#0" expanded="false" />
+            <element signature="e#7019#7631#0" expanded="false" />
+            <element signature="e#7637#7777#0" expanded="false" />
+            <element signature="e#7805#8171#0" expanded="false" />
+            <element signature="e#8177#8240#0" expanded="false" />
+            <element signature="e#8262#8495#0" expanded="false" />
+            <element signature="e#8501#8599#0" expanded="false" />
+            <element signature="e#8630#9064#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1829#1891#0" expanded="false" />
+            <element signature="e#1918#2023#0" expanded="false" />
+            <element signature="e#2029#2132#0" expanded="false" />
+            <element signature="e#2151#2889#0" expanded="false" />
+            <element signature="e#2895#2998#0" expanded="false" />
+            <element signature="e#3017#3654#0" expanded="false" />
+            <element signature="e#3660#3722#0" expanded="false" />
+            <element signature="e#4107#4171#0" expanded="false" />
+            <element signature="e#4192#4313#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPickerOpened.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#2161#2222#0" expanded="false" />
+            <element signature="e#2247#2288#0" expanded="false" />
+            <element signature="e#2294#2397#0" expanded="false" />
+            <element signature="e#2453#3197#0" expanded="false" />
+            <element signature="e#3203#3416#0" expanded="false" />
+            <element signature="e#3472#4447#0" expanded="false" />
+            <element signature="e#4453#4642#0" expanded="false" />
+            <element signature="e#4673#5666#0" expanded="false" />
+            <element signature="e#5672#5824#0" expanded="false" />
+            <element signature="e#5864#6304#0" expanded="false" />
+            <element signature="e#6310#6416#0" expanded="false" />
+            <element signature="e#6446#8793#0" expanded="false" />
+            <element signature="e#8799#9041#0" expanded="false" />
+            <element signature="e#9105#9923#0" expanded="false" />
+            <element signature="e#9929#10031#0" expanded="false" />
+            <element signature="e#10109#11618#0" expanded="false" />
+            <element signature="e#11712#12520#0" expanded="false" />
+            <element signature="e#12526#12992#0" expanded="false" />
+            <element signature="e#13014#14952#0" expanded="false" />
+            <element signature="e#14958#15010#0" expanded="false" />
+            <element signature="e#15035#15539#0" expanded="false" />
+            <element signature="e#15545#15687#0" expanded="false" />
+            <element signature="e#15734#16404#0" expanded="false" />
+            <element signature="e#16410#16589#0" expanded="false" />
+            <element signature="e#16628#17416#0" expanded="false" />
           </folding>
         </state>
       </provider>

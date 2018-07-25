@@ -9,9 +9,15 @@
   display: flex;
 }
 
+.bolder {
+  font-weight: bolder;
+}
+
 .calendarArea {
   .line;
-  padding: 34px 34px 0 34px;
+  padding: 0 34px 0 34px;
+  margin-top: 34px;
+  opacity: 0;
 
   .calendar {
     width: 166.5px;
@@ -27,12 +33,11 @@
 
     .row {
       .line;
-      margin-bottom: 4px;
 
       .day {
         width: 14.5px;
         height: 14px;
-        margin-right: 8px;
+        padding: 2px 4px 2px 4px
       }
 
       .weekend {
@@ -42,7 +47,36 @@
 
       .cell {
         .day;
+        user-select: none;
         cursor: pointer;
+      }
+
+      .cell-weekend {
+        .cell;
+        .weekend;
+      }
+
+      .cell-today {
+        .cell;
+        .bolder;
+      }
+
+      .cell-selected {
+        .cell;
+        color: white;
+        background-color: @highlightColor;
+      }
+
+      .cell:hover {
+        background-color: @grayColor;
+      }
+
+      .cell-weekend:hover {
+        background-color: @grayColor;
+      }
+
+      .cell-today:hover {
+        background-color: @grayColor;
       }
 
       .cell-empty {
@@ -53,17 +87,18 @@
         .day;
         color: @grayColor;
       }
-
-      .cell-weekend {
-        .cell;
-        .weekend;
-      }
-
-      .cell-today {
-        .cell;
-        font-weight: bolder;
-      }
     }
   }
 }
+
+.animation {
+  transition: 399ms;
+  opacity: 1;
+}
+
+.opacity {
+  opacity: 1;
+}
+
+
 

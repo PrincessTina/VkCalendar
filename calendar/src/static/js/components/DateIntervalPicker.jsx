@@ -17,6 +17,7 @@ export default class DateIntervalPicker extends React.Component {
         };
 
         this.changeVisibilityOfDateIntervalPickerOpened = this.changeVisibilityOfDateIntervalPickerOpened.bind(this);
+        this.closeWindowFunction = this.closeWindowFunction.bind(this);
     }
 
     render() {
@@ -38,10 +39,18 @@ export default class DateIntervalPicker extends React.Component {
 
                 <div className={this.state.visibilityOfDateIntervalPickerOpened}>
                     <DateIntervalPickerOpened dateTo={this.state.selectedDateTo}
-                                              dateFrom={this.state.selectedDateFrom}/>
+                                              dateFrom={this.state.selectedDateFrom}
+                                              closeWindowFunction={this.closeWindowFunction}/>
                 </div>
             </div>
         );
+    }
+
+    /**
+     * @state visibilityOfDateIntervalPickerOpened
+     */
+    closeWindowFunction() {
+        this.setState({visibilityOfDateIntervalPickerOpened: 'dateIntervalPicker__popupWindow'});
     }
 
     /**
@@ -91,6 +100,8 @@ export default class DateIntervalPicker extends React.Component {
         const className = (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow') ?
             'dateIntervalPicker__popupWindow-visible' : 'dateIntervalPicker__popupWindow';
 
+        console.log("what the hell");
+
         this.setState({visibilityOfDateIntervalPickerOpened: className});
     };
 
@@ -114,6 +125,6 @@ DateIntervalPicker.propTypes = {
 };
 
 DateIntervalPicker.defaultProps = {
-    dateFrom: new Date(),
-    dateTo: new Date(),
+    dateFrom: new Date("06/01/18 14:20"),
+    dateTo: new Date("07/11/18 15:00"),
 };
