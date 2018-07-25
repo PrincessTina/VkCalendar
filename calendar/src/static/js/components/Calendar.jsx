@@ -35,17 +35,20 @@ export default class Calendar extends React.Component {
     }
 
     componentDidMount() {
-        /*let that = this;
+        let that = this;
 
-        document.addEventListener('mouseup', function(event) {
-            const clickedElement = event.target;
+        document.addEventListener('mouseup', function() {
+            that.mouseUp();
+        });
 
-            if (!that.findParentElementByClass(clickedElement, 'dateIntervalPickerOpened')) {
+        document.addEventListener('click', function(event) {
+            console.log(event.target);
+
+            if (!that.findParentElementByClass(event.target, 'dateIntervalPicker') &&
+            event.target.tagName !== 'HTML') {
                 that.props.closedWindowFunction();
             }
-
-            that.mouseUp();
-        });*/
+        });
     }
 
     /**
@@ -57,6 +60,7 @@ export default class Calendar extends React.Component {
     findParentElementByClass(element, className) {
         while (element && element.parentNode) {
             element = element.parentNode;
+
             if (element.classList && element.classList.contains(className)) {
                 return true;
             }
