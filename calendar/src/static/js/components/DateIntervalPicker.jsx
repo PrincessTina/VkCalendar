@@ -18,6 +18,7 @@ export default class DateIntervalPicker extends React.Component {
 
         this.changeVisibilityOfDateIntervalPickerOpened = this.changeVisibilityOfDateIntervalPickerOpened.bind(this);
         this.closeWindowFunction = this.closeWindowFunction.bind(this);
+        this.setNewDates = this.setNewDates.bind(this);
     }
 
     render() {
@@ -40,18 +41,36 @@ export default class DateIntervalPicker extends React.Component {
                 <div className={this.state.visibilityOfDateIntervalPickerOpened}>
                     <DateIntervalPickerOpened dateTo={this.state.selectedDateTo}
                                               dateFrom={this.state.selectedDateFrom}
-                                              closeWindowFunction={this.closeWindowFunction}/>
+                                              closeWindowFunction={this.closeWindowFunction}
+                                              setNewDates={this.setNewDates}/>
                 </div>
             </div>
         );
     }
 
     /**
+     * Callback function
+     *
+     * @state selectedDateFrom
+     * @state selectedDateTo
+     */
+    setNewDates(selectedDateFrom, selectedDateTo) {
+        this.setState({
+            selectedDateFrom: selectedDateFrom,
+            selectedDateTo: selectedDateTo
+        });
+    }
+
+    /**
+     * Callback function
+     *
      * @state visibilityOfDateIntervalPickerOpened
      */
     closeWindowFunction() {
         if (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow-visible') {
-            this.setState({visibilityOfDateIntervalPickerOpened: 'dateIntervalPicker__popupWindow'});
+            this.setState({
+                visibilityOfDateIntervalPickerOpened: 'dateIntervalPicker__popupWindow'
+            });
         }
     }
 
@@ -88,7 +107,7 @@ export default class DateIntervalPicker extends React.Component {
         const dateToHours = this.addZero(this.state.selectedDateTo.getHours());
         const dateToMinutes = this.addZero(this.state.selectedDateTo.getMinutes());
 
-        if (dateToHours === dateFromHours && dateToMinutes === dateFromMinutes) {
+        if (this.state.selectedDateFrom === this.state.selectedDateTo) {
             return "(" + dateFromHours + ":" + dateFromMinutes + ")";
         } else {
             return "(" + dateFromHours + ":" + dateFromMinutes + " - " + dateToHours + ":" + dateToMinutes + ")";
@@ -102,7 +121,9 @@ export default class DateIntervalPicker extends React.Component {
         const className = (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow') ?
             'dateIntervalPicker__popupWindow-visible' : 'dateIntervalPicker__popupWindow';
 
-        this.setState({visibilityOfDateIntervalPickerOpened: className});
+        this.setState({
+            visibilityOfDateIntervalPickerOpened: className
+        });
     };
 
     /**

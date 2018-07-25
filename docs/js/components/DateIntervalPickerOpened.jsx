@@ -44,7 +44,8 @@ export default class DateIntervalPickerOpened extends React.Component {
                               dateTo={this.props.dateTo}
                               dateFrom={this.props.dateFrom}
                               arrayOfMonths={this.state.arrayOfMonths}
-                              closedWindowFunction={this.props.closeWindowFunction}/>
+                              closedWindowFunction={this.props.closeWindowFunction}
+                              setNewDates={this.props.setNewDates}/>
                 </div>
             </div>
         );
@@ -493,5 +494,6 @@ export default class DateIntervalPickerOpened extends React.Component {
 DateIntervalPickerOpened.propTypes = {
     dateFrom: PropTypes.instanceOf(Date),
     dateTo: PropTypes.instanceOf(Date),
-    closeWindowFunction: PropTypes.func
+    closeWindowFunction: PropTypes.func,
+    setNewDates: PropTypes.func
 };

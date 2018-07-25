@@ -22,7 +22,6 @@ export default class Calendar extends React.Component {
     }
 
     render() {
-        console.log("rendered");
         const leftCalendarContent = this.createCalendarContent(this.props.selectedMonthLeftIndex);
         const rightCalendarContent = this.createCalendarContent(this.props.selectedMonthRightIndex);
 
@@ -34,6 +33,9 @@ export default class Calendar extends React.Component {
         );
     }
 
+    /**
+     * @props closedWindowFunction
+     */
     componentDidMount() {
         let that = this;
 
@@ -42,8 +44,6 @@ export default class Calendar extends React.Component {
         });
 
         document.addEventListener('click', function(event) {
-            console.log(event.target);
-
             if (!that.findParentElementByClass(event.target, 'dateIntervalPicker') &&
             event.target.tagName !== 'HTML') {
                 that.props.closedWindowFunction();
@@ -158,43 +158,6 @@ export default class Calendar extends React.Component {
         return calendarContent;
     }
 
-    // зажата
-    mouseDown(id) {
-        let date = new Date(id);
-
-        this.isClamped = true;
-
-        this.setState({
-            selectedDateFrom: date,
-            selectedDateTo: date,
-            firstlyClickedDate: date
-        });
-    }
-
-    // только пришла на элемент
-    mouseOver(id) {
-        let date = new Date(id);
-
-        if (this.isClamped) {
-            if (date > this.state.firstlyClickedDate) {
-                this.setState({
-                    selectedDateFrom: this.state.firstlyClickedDate,
-                    selectedDateTo: date
-                });
-            } else {
-                this.setState({
-                    selectedDateFrom: date,
-                    selectedDateTo: this.state.firstlyClickedDate
-                });
-            }
-        }
-    }
-
-    // опущена
-    mouseUp() {
-        this.isClamped = false;
-    }
-
     /**
      * @param index
      *
@@ -285,6 +248,74 @@ export default class Calendar extends React.Component {
 
         return weekDay;
     }
+
+    /**
+     * Mouse is clamped
+     *
+     * @state selectedDateFrom
+     * @state selectedDateTo
+     * @state firstlyClickedDate
+     *
+     * @param id
+     */
+    mouseDown(id) {
+        let date = new Date(id);
+
+        this.isClamped = true;
+        this.setState({
+            selectedDateFrom: date,
+            selectedDateTo: date,
+            firstlyClickedDate: date
+        });
+
+        this.synchronize(date, date);
+    }
+
+    /**
+     * Mouse comes to the cell
+     *
+     * @state selectedDateFrom
+     * @state selectedDateTo
+     * @state firstlyClickedDate
+     *
+     * @param id
+     */
+    mouseOver(id) {
+        let date = new Date(id);
+
+        if (this.isClamped) {
+            if (date > this.state.firstlyClickedDate) {
+                this.setState({
+                    selectedDateFrom: this.state.firstlyClickedDate,
+                    selectedDateTo: date
+                });
+                this.synchronize(this.state.firstlyClickedDate, date);
+            } else {
+                this.setState({
+                    selectedDateFrom: date,
+                    selectedDateTo: this.state.firstlyClickedDate
+                });
+                this.synchronize(date, this.state.firstlyClickedDate);
+            }
+        }
+    }
+
+    /**
+     * Mouse isn't clamped anymore
+     */
+    mouseUp() {
+        this.isClamped = false;
+    }
+
+    /**
+     * @param selectedDateFrom
+     * @param selectedDateTo
+     *
+     * @props setNewDates
+     */
+    synchronize(selectedDateFrom, selectedDateTo) {
+        this.props.setNewDates(selectedDateFrom, selectedDateTo);
+    }
 }
 
 Calendar.propTypes = {
@@ -293,5 +324,6 @@ Calendar.propTypes = {
     dateTo: PropTypes.instanceOf(Date),
     dateFrom: PropTypes.instanceOf(Date),
     arrayOfMonths: PropTypes.instanceOf(Array),
-    closedWindowFunction: PropTypes.func
+    closedWindowFunction: PropTypes.func,
+    setNewDates: PropTypes.func
 };
