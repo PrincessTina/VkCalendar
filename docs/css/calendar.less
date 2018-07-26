@@ -1,9 +1,9 @@
 @grayColor: #828282; // color of the years and months in title over calendar content
 @blueColor: #45688e; // color of the weekend and usual months
-@blueBoldColor: #45688e; // color of selected months
 @monthBorderColor: #ccd6e2; // color of border of selected months
 @usualColor: #000000; // color of the usual days
 @highlightColor: #597da3; // color of the selected day range
+@hoverColor: #d5dde5; // color of hover on days
 
 .line {
   display: flex;
@@ -15,8 +15,9 @@
 
 .calendarArea {
   .line;
-  padding: 0 34px 0 34px;
+  padding: 0 32px 0 32px;
   margin-top: 34px;
+  visibility: hidden;
   opacity: 0;
 
   .calendar {
@@ -68,15 +69,15 @@
       }
 
       .cell:hover {
-        background-color: @grayColor;
+        background-color: @hoverColor;
       }
 
       .cell-weekend:hover {
-        background-color: @grayColor;
+        background-color: @hoverColor;
       }
 
       .cell-today:hover {
-        background-color: @grayColor;
+        background-color: @hoverColor;
       }
 
       .cell-empty {
@@ -91,14 +92,17 @@
   }
 }
 
-.animation {
-  transition: 399ms;
+.opacity {
+  visibility: visible;
   opacity: 1;
 }
 
-.opacity {
-  opacity: 1;
+.animation {
+  .opacity;
+  transition: 399ms;
 }
+
+
 
 
 

@@ -33,40 +33,12 @@ export default class Calendar extends React.Component {
         );
     }
 
-    /**
-     * @props closedWindowFunction
-     */
     componentDidMount() {
-        let that = this;
+        const that = this;
 
-        document.addEventListener('mouseup', function() {
+        document.addEventListener('mouseup', function () {
             that.mouseUp();
         });
-
-        document.addEventListener('click', function(event) {
-            if (!that.findParentElementByClass(event.target, 'dateIntervalPicker') &&
-            event.target.tagName !== 'HTML') {
-                that.props.closedWindowFunction();
-            }
-        });
-    }
-
-    /**
-     * @param element
-     * @param className
-     *
-     * @returns {boolean}
-     */
-    findParentElementByClass(element, className) {
-        while (element && element.parentNode) {
-            element = element.parentNode;
-
-            if (element.classList && element.classList.contains(className)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -259,7 +231,7 @@ export default class Calendar extends React.Component {
      * @param id
      */
     mouseDown(id) {
-        let date = new Date(id);
+        const date = new Date(id);
 
         this.isClamped = true;
         this.setState({
@@ -268,7 +240,7 @@ export default class Calendar extends React.Component {
             firstlyClickedDate: date
         });
 
-        this.synchronize(date, date);
+        this.synchronize(date, date, false);
     }
 
     /**
@@ -281,7 +253,7 @@ export default class Calendar extends React.Component {
      * @param id
      */
     mouseOver(id) {
-        let date = new Date(id);
+        const date = new Date(id);
 
         if (this.isClamped) {
             if (date > this.state.firstlyClickedDate) {
@@ -289,13 +261,13 @@ export default class Calendar extends React.Component {
                     selectedDateFrom: this.state.firstlyClickedDate,
                     selectedDateTo: date
                 });
-                this.synchronize(this.state.firstlyClickedDate, date);
+                this.synchronize(this.state.firstlyClickedDate, date, false);
             } else {
                 this.setState({
                     selectedDateFrom: date,
                     selectedDateTo: this.state.firstlyClickedDate
                 });
-                this.synchronize(date, this.state.firstlyClickedDate);
+                this.synchronize(date, this.state.firstlyClickedDate, false);
             }
         }
     }
@@ -305,16 +277,18 @@ export default class Calendar extends React.Component {
      */
     mouseUp() {
         this.isClamped = false;
+        this.synchronize(this.state.selectedDateFrom, this.state.selectedDateTo, true);
     }
 
     /**
      * @param selectedDateFrom
      * @param selectedDateTo
+     * @param isFinishedMoving
      *
      * @props setNewDates
      */
-    synchronize(selectedDateFrom, selectedDateTo) {
-        this.props.setNewDates(selectedDateFrom, selectedDateTo);
+    synchronize(selectedDateFrom, selectedDateTo, isFinishedMoving) {
+        this.props.setNewDates(selectedDateFrom, selectedDateTo, isFinishedMoving);
     }
 }
 
@@ -324,6 +298,5 @@ Calendar.propTypes = {
     dateTo: PropTypes.instanceOf(Date),
     dateFrom: PropTypes.instanceOf(Date),
     arrayOfMonths: PropTypes.instanceOf(Array),
-    closedWindowFunction: PropTypes.func,
     setNewDates: PropTypes.func
 };

@@ -1,4 +1,10 @@
 @border-color: #dedfe1;
+@grayColor: #828282;
+
+.dateIntervalPicker {
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 12.5px;
+}
 
 .dateIntervalPickerHidden {
   width: 200px;
@@ -13,8 +19,17 @@
   }
 
   .interval {
-    width: 160px;
+    width: 180px;
     font-size: 11px;
+  }
+
+  .timeRange {
+    position: absolute;
+    width: max-content;
+    margin: -14px 0 0 92px;
+    font-size: 10px;
+    font-style: italic;
+    color: @grayColor;
   }
 
   .calendar-icon {

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import Calendar from './Calendar.jsx';
+import Time from './Time.jsx';
 
 import '../../css/dateIntervalPickerOpened.less';
 
@@ -44,8 +45,10 @@ export default class DateIntervalPickerOpened extends React.Component {
                               dateTo={this.props.dateTo}
                               dateFrom={this.props.dateFrom}
                               arrayOfMonths={this.state.arrayOfMonths}
-                              closedWindowFunction={this.props.closeWindowFunction}
                               setNewDates={this.props.setNewDates}/>
+                    <Time dateTo={this.props.dateTo}
+                          dateFrom={this.props.dateFrom}
+                          setNewTime={this.props.setNewTime}/>
                 </div>
             </div>
         );
@@ -397,11 +400,8 @@ export default class DateIntervalPickerOpened extends React.Component {
                     arrayOfIndexesLeftAdditionalMonths: arrayOfIndexesLeftAdditionalMonths,
                     arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
                 });
-                console.log("animation ended");
             }, 400, this);
         }
-
-        console.log(id);
     }
 
     /**
@@ -494,6 +494,6 @@ export default class DateIntervalPickerOpened extends React.Component {
 DateIntervalPickerOpened.propTypes = {
     dateFrom: PropTypes.instanceOf(Date),
     dateTo: PropTypes.instanceOf(Date),
-    closeWindowFunction: PropTypes.func,
-    setNewDates: PropTypes.func
+    setNewDates: PropTypes.func,
+    setNewTime: PropTypes.func
 };
