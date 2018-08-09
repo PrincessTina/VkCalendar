@@ -8,9 +8,8 @@ export default class Time extends React.Component {
         super(props);
 
         this.state = {
-            isTimeChecked: false,
-            colonClass: 'colon',
-            timeLineClass: 'timeLine'
+            isTimeChecked: true,
+            timeLineClass: 'timeLine-visible'
         };
 
         this.oldSelectedDateFrom = this.props.dateFrom;
@@ -21,10 +20,11 @@ export default class Time extends React.Component {
     }
 
     render() {
+        let className = (this.state.isTimeChecked) ? 'checkbox on' : 'checkbox';
+
         return (
             <div className={'timeArea'}>
-                <div className={'checkBox'}>
-                    <input className={'checkInput'} type={'checkbox'} defaultChecked={this.state.isTimeChecked}/>
+                <div className={className}>
                     <div className={'text'}>Выбрать время</div>
                 </div>
                 <div className={this.state.timeLineClass}>
@@ -46,14 +46,13 @@ export default class Time extends React.Component {
     componentDidMount() {
         const that = this;
 
-        this.setColonAnimation();
-
         document.addEventListener('click', function (event) {
             if (event.target.classList && !event.target.classList.contains('inputTime')) {
                 that.addZeroInValue();
             }
 
-            if (event.target.classList && event.target.classList.contains('checkInput')) {
+            if (event.target.classList && (that.findParentElementByClass(event.target, 'checkbox') ||
+                event.target.classList.contains('checkbox'))) {
                 that.setState({
                     isTimeChecked: !that.state.isTimeChecked,
                     timeLineClass: (that.state.timeLineClass === 'timeLine') ? 'timeLine-visible' : 'timeLine'
@@ -92,14 +91,21 @@ export default class Time extends React.Component {
     }
 
     /**
-     * @state colonClass
+     * @param element
+     * @param className
+     *
+     * @returns {boolean}
      */
-    setColonAnimation() {
-        setInterval(function (that) {
-            that.setState({
-                colonClass: (that.state.colonClass === 'colon') ? 'colon-animation' : 'colon'
-            });
-        }, 700, this);
+    findParentElementByClass(element, className) {
+        while (element && element.parentNode) {
+            element = element.parentNode;
+
+            if (element.classList && element.classList.contains(className)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -108,7 +114,6 @@ export default class Time extends React.Component {
      * @state isTimeChecked
      * @state oldSelectedDateFrom
      * @state oldSelectedDateTo
-     * @state colonClass
      *
      * @props dateFrom
      * @props dateTo
@@ -138,13 +143,13 @@ export default class Time extends React.Component {
             maxMinutes = today.getMinutes();
         }
 
-        content.push(<input className={'inputTime'} type={'number'} id={hoursId} value={selectedHours}
+        content.push(<input className={'inputTime dark'} type={'number'} id={hoursId} value={selectedHours}
                             min={0} max={maxHours} step={1}
                             onChange={(event) => this.processInput(maxHours, event)}/>);
 
-        content.push(<div className={this.state.colonClass}>:</div>);
+        content.push(<div className={'colon'}>:</div>);
 
-        content.push(<input className={'inputTime'} type={'number'} id={minutesId} value={selectedMinutes}
+        content.push(<input className={'inputTime dark'} type={'number'} id={minutesId} value={selectedMinutes}
                             min={0} max={maxMinutes} step={1}
                             onChange={(event) => this.processInput(maxMinutes, event)}/>);
 

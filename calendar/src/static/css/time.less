@@ -24,46 +24,68 @@ input::-webkit-inner-spin-button {
   margin-top: 8px;
   color: @grayColor;
 
-  .checkBox {
-    .line;
-    height: 16px;
+  .checkbox {
+    width: 110px;
 
     .text {
-      padding-top: 2.3px;
+      padding-top: 1.3px;
     }
   }
 
   .timeLine {
     .line;
-    margin-left: 1px;
+    margin-left: -4px;
     padding-top: 10px;
     visibility: hidden;
     opacity: 0;
-    transition: 800ms;
+    transition: 1s;
 
     .time {
       .line;
-      margin-right: 107px;
+      margin-right: 111px;
 
       .inputTime {
         text-align: center;
         width: 38px;
         height: 19px;
-        border-radius: 8px;
-        border: 1px outset @borderColor;
+        padding: 3.5px 0 2.5px 0;
         margin: 0 3px 0 3px;
       }
 
       .colon {
+        line-height: 18px;
         font-size: 14px;
         font-weight: bolder;
-        transition: 700ms;
-        opacity: 1;
+        -webkit-animation: colon 1600ms linear infinite;
+        animation: colon 1600ms linear infinite;
       }
 
-      .colon-animation {
-        .colon;
-        opacity: 0;
+      @-webkit-keyframes colon {
+        0% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes colon {
+        0% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
       }
     }
   }

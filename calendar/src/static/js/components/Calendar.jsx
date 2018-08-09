@@ -201,6 +201,11 @@ export default class Calendar extends React.Component {
     }
 
     /**
+     * Algorithm is taken from wiki
+     * @link https://ru.wikibooks.org/wiki/%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%BE%D0%B2/%D0%92%D0%B5%D1%87%D0%BD%D1%8B%D0%B9_%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D1%8C
+     *
+     * a, y, m factors are used only for calculating weekday factor
+     *
      * @param index
      *
      * @props arrayOfMonths
@@ -209,12 +214,12 @@ export default class Calendar extends React.Component {
      */
     calculateDayOfWeek(index) {
         const object = this.props.arrayOfMonths[index];
-        const a = parseInt((14 - object.number) / 12);
-        const y = object.year - a;
-        const m = object.number + 12 * a - 2;
-        const day = 1;
-        let weekDay = (day + y + parseInt(y / 4) - parseInt(y / 100) + parseInt(y / 400) + parseInt((31 * m) / 12))
-            % 7;
+        const aFactor = parseInt((14 - object.number) / 12);
+        const yFactor = object.year - aFactor;
+        const mFactor = object.number + 12 * aFactor - 2;
+        const day = 1; // we can (and have to) calculate day of week for only the first day of month
+        let weekDay = (day + yFactor + parseInt(yFactor / 4) - parseInt(yFactor / 100) + parseInt(yFactor / 400) +
+            parseInt((31 * mFactor) / 12)) % 7;
 
         weekDay = (weekDay === 0) ? 6 : weekDay - 1;
 

@@ -75,31 +75,35 @@
         width: @month-width;
         font-weight: 700;
       }
-    }
 
-    .border {
-      width: 68px;
-      height: 2px;
-      background-color: @monthBorderColor;
-      margin: 0 -28.5px;
-      visibility: hidden;
-      position: absolute;
-    }
+      .betweenMonthBorderBlock {
+        width: @between-months-width;
+        height: 13.44px;
 
-    .border-visible {
-      .border;
-      visibility: visible;
+        .betweenMonth {
+          position: relative;
+          left: -12.25px;
+          cursor: pointer;
+          width: 35.5px;
+          height: 13.44px;
+        }
+
+        .border {
+          width: 68px;
+          height: 2px;
+          background-color: @monthBorderColor;
+          margin: 0 -28.5px;
+          visibility: hidden;
+          position: absolute;
+        }
+
+        .border-visible {
+          .border;
+          visibility: visible;
+        }
+      }
     }
   }
-}
-
-.betweenMonth {
-  width: @between-months-width;
-  height: 13.44px;
-}
-
-.betweenMonth:hover {
-  cursor: pointer;
 }
 
 .header-left-5 {
