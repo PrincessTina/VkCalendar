@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../css/calendar.less';
+import './calendar.less';
 
+/**
+ * Calendar area
+ */
 export default class Calendar extends React.Component {
     constructor(props) {
         super(props);
@@ -21,27 +24,20 @@ export default class Calendar extends React.Component {
         this.isClamped = false;
     }
 
-    render() {
-        const leftCalendarContent = this.createCalendarContent(this.props.selectedMonthLeftIndex);
-        const rightCalendarContent = this.createCalendarContent(this.props.selectedMonthRightIndex);
-
-        return (
-            <div className={'calendarArea'}>
-                <div className={'calendar'}>{leftCalendarContent}</div>
-                <div className={'calendar'}>{rightCalendarContent}</div>
-            </div>
-        );
-    }
-
+    /**
+     * Hangs event on mouse up
+     */
     componentDidMount() {
         const that = this;
 
-        document.addEventListener('mouseup', function () {
+        document.addEventListener('mouseup', () => {
             that.mouseUp();
         });
     }
 
     /**
+     * Returns calendar's area content
+     *
      * @param index
      *
      * @props arrayOfMonths
@@ -131,6 +127,8 @@ export default class Calendar extends React.Component {
     }
 
     /**
+     * Returns matrix of days (broken down by days of the week) of month
+     *
      * @param index
      *
      * @returns {Array}
@@ -160,6 +158,8 @@ export default class Calendar extends React.Component {
     }
 
     /**
+     * Returns number of the last day of month
+     *
      * @param index
      *
      * @props arrayOfMonths
@@ -184,6 +184,8 @@ export default class Calendar extends React.Component {
     }
 
     /**
+     * Makes a leap year check
+     *
      * @param year
      *
      * @returns {boolean}
@@ -201,6 +203,8 @@ export default class Calendar extends React.Component {
     }
 
     /**
+     * Finds day of week for the first day of month
+     *
      * Algorithm is taken from wiki
      * @link https://ru.wikibooks.org/wiki/%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%BE%D0%B2/%D0%92%D0%B5%D1%87%D0%BD%D1%8B%D0%B9_%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D1%8C
      *
@@ -228,6 +232,8 @@ export default class Calendar extends React.Component {
 
     /**
      * Mouse is clamped
+     * Sets selectedDateFrom, selectedDateTo, firstlyClickedDate in clicked date; calls function that
+     * updates dates in mini-version
      *
      * @state selectedDateFrom
      * @state selectedDateTo
@@ -250,6 +256,8 @@ export default class Calendar extends React.Component {
 
     /**
      * Mouse comes to the cell
+     * Changes selectedDateFrom and selectedDateTo on the basis of the date on which brought; calls function that
+     * updates dates in mini-version
      *
      * @state selectedDateFrom
      * @state selectedDateTo
@@ -279,6 +287,10 @@ export default class Calendar extends React.Component {
 
     /**
      * Mouse isn't clamped anymore
+     * Stops to count dates; calls function that updates dates in mini-version
+     *
+     * @state selectedDateFrom
+     * @state selectedDateTo
      */
     mouseUp() {
         this.isClamped = false;
@@ -286,6 +298,8 @@ export default class Calendar extends React.Component {
     }
 
     /**
+     * Updates dates in mini-version
+     *
      * @param selectedDateFrom
      * @param selectedDateTo
      * @param isFinishedMoving
@@ -294,6 +308,20 @@ export default class Calendar extends React.Component {
      */
     synchronize(selectedDateFrom, selectedDateTo, isFinishedMoving) {
         this.props.setNewDates(selectedDateFrom, selectedDateTo, isFinishedMoving);
+    }
+
+    /**
+     * Displays calendar content
+     *
+     * @returns {XML}
+     */
+    render() {
+        return (
+            <div className={'calendarArea'}>
+                <div className={'calendar'}>{this.createCalendarContent(this.props.selectedMonthLeftIndex)}</div>
+                <div className={'calendar'}>{this.createCalendarContent(this.props.selectedMonthRightIndex)}</div>
+            </div>
+        );
     }
 }
 

@@ -5,7 +5,7 @@ import Menu from '../components/Menu.jsx';
 
 import '../../css/main.less';
 
-document.onreadystatechange = function () {
+document.onreadystatechange = () => {
     if (document.readyState === "interactive") {
         ReactDOM.render(
             <Menu/>,

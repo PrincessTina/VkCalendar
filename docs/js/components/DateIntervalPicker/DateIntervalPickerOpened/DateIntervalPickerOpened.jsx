@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import Calendar from './Calendar.jsx';
-import Time from './Time.jsx';
+import Calendar from './Calendar/Calendar.jsx';
+import Time from './Time/Time.jsx';
 
-import '../../css/dateIntervalPickerOpened.less';
+import './dateIntervalPickerOpened.less';
 
+/**
+ * Full version of the element
+ */
 export default class DateIntervalPickerOpened extends React.Component {
     constructor(props) {
         super(props);
@@ -31,27 +34,24 @@ export default class DateIntervalPickerOpened extends React.Component {
         this.selectMonths = this.selectMonths.bind(this);
     }
 
-    render() {
-        const content = this.renderFullMonthsContent();
+    /**
+     * Sets animation at calendar's area
+     */
+    setChildAnimation() {
+        if (document.getElementsByClassName('calendarArea')) {
+            let area = document.getElementsByClassName('calendarArea')[0];
 
-        return (
-            <div className={'dateIntervalPickerOpened'}>
-                <div className={'dateIntervalPickerOpened__content'}>
-                    <div className={this.state.headerAnimationClass}>
-                        {content}
-                    </div>
-                    <Calendar selectedMonthLeftIndex={this.state.selectedMonthLeftIndex}
-                              selectedMonthRightIndex={this.state.selectedMonthRightIndex}
-                              dateTo={this.props.dateTo}
-                              dateFrom={this.props.dateFrom}
-                              arrayOfMonths={this.state.arrayOfMonths}
-                              setNewDates={this.props.setNewDates}/>
-                    <Time dateTo={this.props.dateTo}
-                          dateFrom={this.props.dateFrom}
-                          setNewTime={this.props.setNewTime}/>
-                </div>
-            </div>
-        );
+            if (!this.startRendering) {
+                area.classList.remove('animation', 'opacity');
+
+                setTimeout(function () {
+                    area.classList.add('animation');
+                }, 1);
+            } else {
+                area.classList.add('opacity');
+                this.startRendering = false;
+            }
+        }
     }
 
     /**
@@ -62,30 +62,8 @@ export default class DateIntervalPickerOpened extends React.Component {
     }
 
     /**
-     * @param fullContent
-     * @param object
-     * @param index
-     * @param monthClass
-     */
-    checkMonth(fullContent, object, index, monthClass) {
-        let timing = [];
-
-        if (object.number === 12) {
-            timing.push(<div className={'decYear'}>{object.year}</div>);
-            timing.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
-
-            fullContent.push(<div className={'decYearBlock'}>{timing}</div>);
-        } else if (object.number === 1) {
-            timing.push(<div className={'janYear'}>{object.year}</div>);
-            timing.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
-
-            fullContent.push(<div className={'janYearBlock'}>{timing}</div>);
-        } else {
-            fullContent.push(<div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>);
-        }
-    }
-
-    /**
+     * Adds invisible additional months with left and right side
+     *
      * @param isLeftAdditionalMonths
      *
      * @state arrayOfIndexesLeftAdditionalMonths
@@ -95,10 +73,10 @@ export default class DateIntervalPickerOpened extends React.Component {
      * @returns {Array}
      */
     addAdditionalMonthsContent(isLeftAdditionalMonths) {
-        const arraySize = 5;
         const arrayOfIndexesOfAdditionalMonths = (isLeftAdditionalMonths)
             ? this.state.arrayOfIndexesLeftAdditionalMonths : this.state.arrayOfIndexesRightAdditionalMonths;
-        let fullContent = [];
+        const arraySize = arrayOfIndexesOfAdditionalMonths.length; // 5
+        let content = [];
 
         for (let i = 0; i < arraySize; i++) {
             const index = arrayOfIndexesOfAdditionalMonths[i];
@@ -115,31 +93,32 @@ export default class DateIntervalPickerOpened extends React.Component {
                 object = this.state.arrayOfMonths[index];
             }
 
-            this.checkMonth(fullContent, object, index, 'month');
+            content.push(this.getCheckedMonth(object, index, 'month'));
 
             if (isLeftAdditionalMonths || (!isLeftAdditionalMonths && i !== arraySize - 1)) {
-                this.pushBetweenMonthBlock(fullContent, id);
+                content.push(this.pushBetweenMonthBlock(id));
             }
         }
 
-        return fullContent;
+        return content;
     }
 
     /**
+     * Returns full month content (all 12 with additional with left and right side)
+     *
      * @state arrayOfIndexesOfVisibleMonths
      * @state arrayOfMonths
      * @state selectedMonthRightIndex
      * @state selectedMonthLeftIndex
      *
-     * @returns {Array}
+     * @returns {XML}
      */
     renderFullMonthsContent() {
         const arrayOfIndexesOfVisibleMonths = this.state.arrayOfIndexesOfVisibleMonths;
-        const arraySize = 12;
-        let fullContent = [];
-        let timing;
+        const arraySize = arrayOfIndexesOfVisibleMonths.length; // 12
+        let content = [];
 
-        fullContent.push(this.addAdditionalMonthsContent(true));
+        content.push(this.addAdditionalMonthsContent(true));
 
         for (let i = 0; i < arraySize; i++) {
             const index = arrayOfIndexesOfVisibleMonths[i];
@@ -148,34 +127,70 @@ export default class DateIntervalPickerOpened extends React.Component {
                 index === this.state.selectedMonthRightIndex) ? 'month-selected' : 'month';
             const object = this.state.arrayOfMonths[index];
 
-            this.checkMonth(fullContent, object, index, monthClass);
-            this.pushBetweenMonthBlock(fullContent, id);
+            content.push(this.getCheckedMonth(object, index, monthClass));
+            content.push(this.pushBetweenMonthBlock(id));
         }
 
-        fullContent.push(this.addAdditionalMonthsContent(false));
+        content.push(this.addAdditionalMonthsContent(false));
 
-        timing = fullContent;
-        fullContent = [];
-        fullContent.push(<div className={'lineOfMonths'}>{timing}</div>);
-
-        return fullContent;
+        return (
+            <div className={'lineOfMonths'}>
+                {content}
+            </div>
+        );
     }
 
     /**
-     * @param content
+     * Checks month for december or january compliance and returns appropriate content
+     *
+     * @param object
+     * @param index
+     * @param monthClass
+     *
+     * @returns {XML}
+     */
+    getCheckedMonth(object, index, monthClass) {
+        if (object.number === 12) {
+            return (
+                <div className={'decYearBlock'}>
+                    <div className={'decYear'}>{object.year}</div>
+                    <div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>
+                </div>
+            );
+        } else if (object.number === 1) {
+            return (
+                <div className={'janYearBlock'}>
+                    <div className={'janYear'}>{object.year}</div>
+                    <div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>
+                </div>
+            );
+        } else {
+            return (
+                <div className={monthClass} id={index}>{object.month.substr(0, 3)}</div>
+            );
+        }
+    }
+
+    /**
+     * Adds betweenMonthBorderBlock (between month block with border under it and months)
+     *
      * @param id (format: "149-150")
      *
      * @state selectedMonthLeftIndex
      * @state selectedMonthRightIndex
+     *
+     * @returns {XML}
      */
-    pushBetweenMonthBlock(content, id) {
+    pushBetweenMonthBlock(id) {
         const borderClass = (this.state.selectedMonthLeftIndex + "-" + this.state.selectedMonthRightIndex === id) ?
             'border-visible' : 'border';
-        let timing = [];
 
-        timing.push(<div className={'betweenMonth'} id={id} onClick={() => this.selectMonths(id)}/>);
-        timing.push(<div className={borderClass} id={id + "b"}/>);
-        content.push(<div className={'betweenMonthBorderBlock'}>{timing}</div>);
+        return (
+            <div className={'betweenMonthBorderBlock'}>
+                <div className={'betweenMonth'} id={id} onClick={() => this.selectMonths(id)}/>
+                <div className={borderClass} id={id + "b"}/>
+            </div>
+        );
     }
 
     /**
@@ -288,6 +303,8 @@ export default class DateIntervalPickerOpened extends React.Component {
     }
 
     /**
+     * Fills array of indexes of visible months
+     *
      * @param arrayOfMonths
      * @param indexOfRightMonth
      *
@@ -331,17 +348,26 @@ export default class DateIntervalPickerOpened extends React.Component {
         return arrayOfIndexesOfVisibleMonths;
     }
 
+    /**
+     * Fills array of indexes of addiitonal months
+     *
+     * @param arrayOfMonths
+     * @param arrayOfIndexesOfVisibleMonths
+     *
+     * @returns {{arrayOfIndexesLeftAdditionalMonths: Array, arrayOfIndexesRightAdditionalMonths: Array}}
+     */
     getFilledArrayOfIndexesOfAdditionalMonths(arrayOfMonths, arrayOfIndexesOfVisibleMonths) {
+        const arraySize = 5;
         const leftLimit = arrayOfIndexesOfVisibleMonths[0] - 1;
         const rightLimit = arrayOfIndexesOfVisibleMonths[arrayOfIndexesOfVisibleMonths.length - 1] + 1;
         let arrayOfIndexesLeftAdditionalMonths = [];
         let arrayOfIndexesRightAdditionalMonths = [];
 
-        for (let i = leftLimit; i > leftLimit - 5; i--) {
+        for (let i = leftLimit; i > leftLimit - arraySize; i--) {
             arrayOfIndexesLeftAdditionalMonths.unshift(i);
         }
 
-        for (let i = rightLimit; i < rightLimit + 5; i++) {
+        for (let i = rightLimit; i < rightLimit + arraySize; i++) {
             const index = (arrayOfMonths[i] !== undefined) ? i : -i;
             arrayOfIndexesRightAdditionalMonths.push(index);
         }
@@ -405,26 +431,8 @@ export default class DateIntervalPickerOpened extends React.Component {
     }
 
     /**
-     * Sets animation at calendar's area
-     */
-    setChildAnimation() {
-        if (document.getElementsByClassName('calendarArea')) {
-            let area = document.getElementsByClassName('calendarArea')[0];
-
-            if (!this.startRendering) {
-                area.classList.remove('animation', 'opacity');
-
-                setTimeout(function () {
-                    area.classList.add('animation');
-                }, 1);
-            } else {
-                area.classList.add('opacity');
-                this.startRendering = false;
-            }
-        }
-    }
-
-    /**
+     * Returns animation class, that necessary for jump to the other month's pair
+     *
      * @param selectedMonthLeftIndex
      *
      * @state arrayOfIndexesOfVisibleMonths
@@ -457,6 +465,8 @@ export default class DateIntervalPickerOpened extends React.Component {
     }
 
     /**
+     * Returns maximum possible number to the desired
+     *
      * @param desiredStepSize
      *
      * @state arrayOfIndexesLeftAdditionalMonths
@@ -488,6 +498,32 @@ export default class DateIntervalPickerOpened extends React.Component {
         }
 
         return maxStep;
+    }
+
+    /**
+     * Displays header with months
+     *
+     * @returns {XML}
+     */
+    render() {
+        return (
+            <div className={'dateIntervalPickerOpened'}>
+                <div className={'dateIntervalPickerOpened__content'}>
+                    <div className={this.state.headerAnimationClass}>
+                        {this.renderFullMonthsContent()}
+                    </div>
+                    <Calendar selectedMonthLeftIndex={this.state.selectedMonthLeftIndex}
+                              selectedMonthRightIndex={this.state.selectedMonthRightIndex}
+                              dateTo={this.props.dateTo}
+                              dateFrom={this.props.dateFrom}
+                              arrayOfMonths={this.state.arrayOfMonths}
+                              setNewDates={this.props.setNewDates}/>
+                    <Time dateTo={this.props.dateTo}
+                          dateFrom={this.props.dateFrom}
+                          setNewTime={this.props.setNewTime}/>
+                </div>
+            </div>
+        );
     }
 }
 

@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import DateIntervalPickerOpened from './DateIntervalPickerOpened.jsx';
+import DateIntervalPickerOpened from './DateIntervalPickerOpened/DateIntervalPickerOpened.jsx';
 
-import '../../css/dateIntervalPicker.less';
-import icon from '../../images/calendar.png';
+import './dateIntervalPicker.less';
+import icon from '../../../images/calendar.png';
 
+/**
+ * Mini-version of the element, by which user can open the full version
+ */
 export default class DateIntervalPicker extends React.Component {
     constructor(props) {
         super(props);
@@ -21,37 +24,40 @@ export default class DateIntervalPicker extends React.Component {
         this.setNewTime = this.setNewTime.bind(this);
     }
 
-    render() {
-        let dateRange = this.displayDate();
-        let timeRange = this.displayTime();
-
-        return (
-            <div className={'dateIntervalPicker'}>
-                <div className={'dateIntervalPickerHidden'} onClick={this.changeVisibilityOfDateIntervalPickerOpened}>
-                    <div className={'wrapper'}>
-                        <div className={'interval'}>
-                            {dateRange}{timeRange}
-                        </div>
-                        <div className={'calendar-icon'}>
-                            <img src={icon}/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={this.state.visibilityOfDateIntervalPickerOpened}>
-                    <DateIntervalPickerOpened dateTo={this.state.selectedDateTo}
-                                              dateFrom={this.state.selectedDateFrom}
-                                              setNewDates={this.setNewDates}
-                                              setNewTime={this.setNewTime}/>
-                </div>
-            </div>
-        );
+    /**
+     * Removes visibility of the DateIntervalPicker's full version if it is
+     *
+     * @state visibilityOfDateIntervalPickerOpened
+     */
+    closeWindowFunction() {
+        if (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow-visible') {
+            this.setState({
+                visibilityOfDateIntervalPickerOpened: 'dateIntervalPicker__popupWindow'
+            });
+        }
     }
 
+    /**
+     * Changes visibility of the DateIntervalPicker's full version to the opposite
+     *
+     * @state visibilityOfDateIntervalPickerOpened
+     */
+    changeVisibilityOfDateIntervalPickerOpened() {
+        const className = (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow') ?
+            'dateIntervalPicker__popupWindow-visible' : 'dateIntervalPicker__popupWindow';
+
+        this.setState({
+            visibilityOfDateIntervalPickerOpened: className
+        });
+    };
+
+    /**
+     * Hangs event closing DateIntervalPicker's full version window on click
+     */
     componentDidMount() {
         const that = this;
 
-        document.addEventListener('click', function (event) {
+        document.addEventListener('click', (event) => {
             if (!that.findParentElementByClass(event.target, 'dateIntervalPicker') &&
                 event.target.tagName !== 'HTML') {
                 that.closeWindowFunction();
@@ -60,6 +66,8 @@ export default class DateIntervalPicker extends React.Component {
     }
 
     /**
+     * Checks element parent's classes recursively for compliance with the sought
+     *
      * @param element
      * @param className
      *
@@ -79,6 +87,7 @@ export default class DateIntervalPicker extends React.Component {
 
     /**
      * Callback function, uses in Calendar.jsx
+     * Exposes new dates (with old time)
      *
      * @param selectedDateFrom
      * @param selectedDateTo
@@ -96,28 +105,15 @@ export default class DateIntervalPicker extends React.Component {
             this.state.selectedDateTo.getMinutes());
 
         if (isFinishedMoving) {
-            if (dateFrom.getFullYear() === dateTo.getFullYear() && dateFrom.getMonth() === dateTo.getMonth() &&
-                dateFrom.getDate() === dateTo.getDate()) {
-                if (dateFrom.getHours() > dateTo.getHours() || dateFrom.getHours() === dateTo.getHours() &&
-                    dateFrom.getMinutes() > dateTo.getMinutes()) {
-                    const timing = dateFrom;
-                    dateFrom = dateTo;
-                    dateTo = timing;
-                }
+            if (dateFrom.getTime() > dateTo.getTime()) {
+                const timing = dateFrom;
+                dateFrom = dateTo;
+                dateTo = timing;
             }
         }
 
-        if (!(this.state.selectedDateFrom.getFullYear() === dateFrom.getFullYear() &&
-                this.state.selectedDateFrom.getMonth() === dateFrom.getMonth() &&
-                this.state.selectedDateFrom.getDate() === dateFrom.getDate() &&
-                this.state.selectedDateFrom.getHours() === dateFrom.getHours() &&
-                this.state.selectedDateFrom.getMinutes() === dateFrom.getMinutes() &&
-                this.state.selectedDateTo.getFullYear() === dateTo.getFullYear() &&
-                this.state.selectedDateTo.getMonth() === dateTo.getMonth() &&
-                this.state.selectedDateTo.getDate() === dateTo.getDate() &&
-                this.state.selectedDateTo.getHours() === dateTo.getHours() &&
-                this.state.selectedDateTo.getMinutes() === dateTo.getMinutes())) {
-
+        if (!(this.state.selectedDateFrom.getTime() === dateFrom.getTime() &&
+                this.state.selectedDateTo.getTime() === dateTo.getTime())) {
             this.setState({
                 selectedDateFrom: dateFrom,
                 selectedDateTo: dateTo
@@ -129,6 +125,10 @@ export default class DateIntervalPicker extends React.Component {
 
     /**
      * Callback function, uses in Time.jsx
+     * Exposes new time (with old dates)
+     *
+     * @param selectedDateFrom
+     * @param selectedDateTo
      *
      * @state selectedDateFrom
      * @state selectedDateTo
@@ -143,23 +143,12 @@ export default class DateIntervalPicker extends React.Component {
     }
 
     /**
-     * Callback function
+     * Returns date xml content
      *
-     * @state visibilityOfDateIntervalPickerOpened
-     */
-    closeWindowFunction() {
-        if (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow-visible') {
-            this.setState({
-                visibilityOfDateIntervalPickerOpened: 'dateIntervalPicker__popupWindow'
-            });
-        }
-    }
-
-    /**
      * @state selectedDateTo
      * @state selectedDateFrom
      *
-     * @returns {Array}
+     * @returns {XML}
      */
     displayDate() {
         const dateFromDay = this.addZero(this.state.selectedDateFrom.getDate());
@@ -167,54 +156,48 @@ export default class DateIntervalPicker extends React.Component {
         const dateToDay = this.addZero(this.state.selectedDateTo.getDate());
         const dateToMonth = this.addZero(this.state.selectedDateTo.getMonth() + 1);
         const dateToYear = this.addZero(this.state.selectedDateTo.getFullYear() % 1000);
-        let content = [];
 
         if (dateFromDay === dateToDay && dateFromMonth === dateToMonth) {
-            content.push(<div className={'dateRange'}>{dateToDay + "." + dateToMonth + "." + dateToYear}</div>);
+            return (
+                <div className={'dateRange'}>{dateToDay + "." + dateToMonth + "." + dateToYear}</div>
+            );
         } else {
-            content.push(<div className={'dateRange'}>{dateFromDay + "." + dateFromMonth} &minus; {dateToDay
-            + "." + dateToMonth + "." + dateToYear}</div>);
+            return (
+                <div className={'dateRange'}>{dateFromDay + "." + dateFromMonth} &minus; {dateToDay
+                + "." + dateToMonth + "." + dateToYear}</div>
+            );
         }
-
-        return content;
     }
 
     /**
+     * Returns time xml content
+     *
      * @state selectedDateTo
      * @state selectedDateFrom
      *
-     * @returns {Array}
+     * @returns {XML}
      */
     displayTime() {
         const dateFromHours = this.addZero(this.state.selectedDateFrom.getHours());
         const dateFromMinutes = this.addZero(this.state.selectedDateFrom.getMinutes());
         const dateToHours = this.addZero(this.state.selectedDateTo.getHours());
         const dateToMinutes = this.addZero(this.state.selectedDateTo.getMinutes());
-        let content = [];
 
-        if (this.state.selectedDateFrom === this.state.selectedDateTo) {
-            content.push(<div className={'timeRange'}>{dateFromHours + ":" + dateFromMinutes}</div>);
+        if (this.state.selectedDateFrom.getTime() === this.state.selectedDateTo.getTime()) {
+            return (
+                <div className={'timeRange'}>{dateFromHours + ":" + dateFromMinutes}</div>
+            );
         } else {
-            content.push(<div className={'timeRange'}>
-                {dateFromHours + ":" + dateFromMinutes} &minus; {dateToHours + ":" + dateToMinutes}</div>);
+            return (
+                <div className={'timeRange'}>{dateFromHours + ":" + dateFromMinutes} &minus; {dateToHours +
+                ":" + dateToMinutes}</div>
+            );
         }
-
-        return content;
     }
 
     /**
-     * @state visibilityOfDateIntervalPickerOpened
-     */
-    changeVisibilityOfDateIntervalPickerOpened() {
-        const className = (this.state.visibilityOfDateIntervalPickerOpened === 'dateIntervalPicker__popupWindow') ?
-            'dateIntervalPicker__popupWindow-visible' : 'dateIntervalPicker__popupWindow';
-
-        this.setState({
-            visibilityOfDateIntervalPickerOpened: className
-        });
-    };
-
-    /**
+     * Add zero at the start of number string if the number < 10
+     *
      * @param number
      *
      * @returns {string}
@@ -228,6 +211,8 @@ export default class DateIntervalPicker extends React.Component {
     }
 
     /**
+     * Calls function from props with new dates
+     *
      * @param selectedDateFrom
      * @param selectedDateTo
      *
@@ -235,6 +220,35 @@ export default class DateIntervalPicker extends React.Component {
      */
     onChange(selectedDateFrom, selectedDateTo) {
         this.props.onChange(selectedDateFrom.getTime(), selectedDateTo.getTime());
+    }
+
+    /**
+     * Displays mini-version
+     *
+     * @returns {XML}
+     */
+    render() {
+        return (
+            <div className={'dateIntervalPicker'}>
+                <div className={'dateIntervalPickerHidden'} onClick={this.changeVisibilityOfDateIntervalPickerOpened}>
+                    <div className={'wrapper'}>
+                        <div className={'interval'}>
+                            {this.displayDate()}{this.displayTime()}
+                        </div>
+                        <div className={'calendar-icon'}>
+                            <img src={icon}/>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={this.state.visibilityOfDateIntervalPickerOpened}>
+                    <DateIntervalPickerOpened dateTo={this.state.selectedDateTo}
+                                              dateFrom={this.state.selectedDateFrom}
+                                              setNewDates={this.setNewDates}
+                                              setNewTime={this.setNewTime}/>
+                </div>
+            </div>
+        );
     }
 }
 

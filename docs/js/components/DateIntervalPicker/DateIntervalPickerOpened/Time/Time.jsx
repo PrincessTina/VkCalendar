@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../css/time.less';
+import './time.less';
 
+/**
+ * Time area
+ */
 export default class Time extends React.Component {
     constructor(props) {
         super(props);
@@ -19,23 +22,9 @@ export default class Time extends React.Component {
         this.addZeroInValue = this.addZeroInValue.bind(this);
     }
 
-    render() {
-        let className = (this.state.isTimeChecked) ? 'checkbox on' : 'checkbox';
-
-        return (
-            <div className={'timeArea'}>
-                <div className={className}>
-                    <div className={'text'}>Выбрать время</div>
-                </div>
-                <div className={this.state.timeLineClass}>
-                    <div className={'time'}>{this.createTimeBlocks(true)}</div>
-                    <div className={'time'}>{this.createTimeBlocks(false)}</div>
-                </div>
-            </div>
-        );
-    }
-
     /**
+     * Hangs event on click
+     *
      * @state isTimeChecked
      * @state timeLineClass
      *
@@ -46,7 +35,7 @@ export default class Time extends React.Component {
     componentDidMount() {
         const that = this;
 
-        document.addEventListener('click', function (event) {
+        document.addEventListener('click', (event) => {
             if (event.target.classList && !event.target.classList.contains('inputTime')) {
                 that.addZeroInValue();
             }
@@ -91,6 +80,8 @@ export default class Time extends React.Component {
     }
 
     /**
+     * Checks element parent's classes recursively for compliance with the sought
+     *
      * @param element
      * @param className
      *
@@ -109,6 +100,8 @@ export default class Time extends React.Component {
     }
 
     /**
+     * Returns time block
+     *
      * @param isTimeFrom
      *
      * @state isTimeChecked
@@ -118,7 +111,7 @@ export default class Time extends React.Component {
      * @props dateFrom
      * @props dateTo
      *
-     * @returns {Array}
+     * @returns {XML}
      */
     createTimeBlocks(isTimeFrom) {
         const dateFrom = (this.state.isTimeChecked) ? this.props.dateFrom : this.oldSelectedDateFrom;
@@ -131,7 +124,6 @@ export default class Time extends React.Component {
         const minutesId = 'm' + digit;
         let maxHours = 23;
         let maxMinutes = 59;
-        let content = [];
 
         if ((isTimeFrom && dateFrom.getFullYear() === today.getFullYear() &&
                 dateFrom.getDate() === today.getDate() &&
@@ -143,20 +135,20 @@ export default class Time extends React.Component {
             maxMinutes = today.getMinutes();
         }
 
-        content.push(<input className={'inputTime dark'} type={'number'} id={hoursId} value={selectedHours}
-                            min={0} max={maxHours} step={1}
-                            onChange={(event) => this.processInput(maxHours, event)}/>);
-
-        content.push(<div className={'colon'}>:</div>);
-
-        content.push(<input className={'inputTime dark'} type={'number'} id={minutesId} value={selectedMinutes}
-                            min={0} max={maxMinutes} step={1}
-                            onChange={(event) => this.processInput(maxMinutes, event)}/>);
-
-        return content;
+        return (
+            <div className={'time'}>
+                <input className={'inputTime dark'} type={'number'} id={hoursId} value={selectedHours}
+                       min={0} max={maxHours} step={1} onChange={(event) => this.processInput(maxHours, event)}/>
+                <div className={'colon'}>:</div>
+                <input className={'inputTime dark'} type={'number'} id={minutesId} value={selectedMinutes}
+                       min={0} max={maxMinutes} step={1} onChange={(event) => this.processInput(maxMinutes, event)}/>
+            </div>
+        );
     }
 
     /**
+     * Corrects input, sets new times, calls function that sets new time
+     *
      * @param maxValue
      * @param event
      *
@@ -200,22 +192,19 @@ export default class Time extends React.Component {
                     break;
             }
 
-            if (selectedDateTo.getFullYear() === selectedDateFrom.getFullYear() &&
-                selectedDateTo.getMonth() === selectedDateFrom.getMonth() &&
-                selectedDateTo.getDate() === selectedDateFrom.getDate()) {
-                if (selectedDateFrom.getHours() === selectedDateTo.getHours() &&
-                    selectedDateFrom.getMinutes() > selectedDateTo.getMinutes() ||
-                    selectedDateFrom.getHours() > selectedDateTo.getHours()) {
-                    let timing = selectedDateFrom;
-                    selectedDateFrom = selectedDateTo;
-                    selectedDateTo = timing;
-                }
+            if (selectedDateTo.getTime() < selectedDateFrom.getTime()) {
+                let timing = selectedDateFrom;
+                selectedDateFrom = selectedDateTo;
+                selectedDateTo = timing;
             }
 
             this.props.setNewTime(selectedDateFrom, selectedDateTo);
         }
     }
 
+    /**
+     * Adds one or two zeros at start of value string if it's length < 2
+     */
     addZeroInValue() {
         let inputElements = document.getElementsByClassName('inputTime');
 
@@ -228,6 +217,29 @@ export default class Time extends React.Component {
                 element.value = '00';
             }
         }
+    }
+
+    /**
+     * Displays time area
+     *
+     * @state isTimeChecked
+     *
+     * @returns {XML}
+     */
+    render() {
+        let className = (this.state.isTimeChecked) ? 'checkbox on' : 'checkbox';
+
+        return (
+            <div className={'timeArea'}>
+                <div className={className}>
+                    <div className={'text'}>Выбрать время</div>
+                </div>
+                <div className={this.state.timeLineClass}>
+                    {this.createTimeBlocks(true)}
+                    {this.createTimeBlocks(false)}
+                </div>
+            </div>
+        );
     }
 }
 

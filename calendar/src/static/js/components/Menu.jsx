@@ -1,14 +1,19 @@
 import React from "react";
 
-import DateIntervalPicker from './DateIntervalPicker.jsx';
+import DateIntervalPicker from './DateIntervalPicker/DateIntervalPicker.jsx';
 
 import '../../css/menu.less';
 
-/*
+/**
 Menu component - isn't really necessary component, but it's needed for
 DateIntervalPicker's environment
  */
 export default class Menu extends React.Component {
+    /**
+     * Draws the menu like vk.com/search where the DateIntervalPicker component is located
+     *
+     * @returns {XML}
+     */
     render() {
         return (
             <div className={'menu'}>
