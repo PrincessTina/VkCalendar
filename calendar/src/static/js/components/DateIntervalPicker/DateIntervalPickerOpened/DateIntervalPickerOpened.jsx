@@ -357,7 +357,7 @@ export default class DateIntervalPickerOpened extends React.Component {
      * @returns {{arrayOfIndexesLeftAdditionalMonths: Array, arrayOfIndexesRightAdditionalMonths: Array}}
      */
     getFilledArrayOfIndexesOfAdditionalMonths(arrayOfMonths, arrayOfIndexesOfVisibleMonths) {
-        const arraySize = 5;
+        const arraySize = 6;
         const leftLimit = arrayOfIndexesOfVisibleMonths[0] - 1;
         const rightLimit = arrayOfIndexesOfVisibleMonths[arrayOfIndexesOfVisibleMonths.length - 1] + 1;
         let arrayOfIndexesLeftAdditionalMonths = [];
@@ -393,40 +393,42 @@ export default class DateIntervalPickerOpened extends React.Component {
      * @state arrayOfIndexesRightAdditionalMonths
      */
     selectMonths(id) {
-        const selectedMonthLeftIndex = parseInt(id.substr(0, id.indexOf("-")));
-        const selectedMonthRightIndex = selectedMonthLeftIndex + 1;
-        const arrayOfIndexesOfVisibleMonths =
-            this.getFilledArrayOfIndexesOfVisibleMonths(this.state.arrayOfMonths, selectedMonthRightIndex);
-        const {arrayOfIndexesLeftAdditionalMonths, arrayOfIndexesRightAdditionalMonths} =
-            this.getFilledArrayOfIndexesOfAdditionalMonths(this.state.arrayOfMonths, arrayOfIndexesOfVisibleMonths);
-        const headerAnimationClass = this.getAnimationClass(selectedMonthLeftIndex);
+        if (id !== '-1-0' && id !== (this.state.arrayOfMonths.length - 1 + '-' + this.state.arrayOfMonths.length)) { // check on boundary
+            const selectedMonthLeftIndex = parseInt(id.substr(0, id.indexOf("-")));
+            const selectedMonthRightIndex = selectedMonthLeftIndex + 1;
+            const arrayOfIndexesOfVisibleMonths =
+                this.getFilledArrayOfIndexesOfVisibleMonths(this.state.arrayOfMonths, selectedMonthRightIndex);
+            const {arrayOfIndexesLeftAdditionalMonths, arrayOfIndexesRightAdditionalMonths} =
+                this.getFilledArrayOfIndexesOfAdditionalMonths(this.state.arrayOfMonths, arrayOfIndexesOfVisibleMonths);
+            const headerAnimationClass = this.getAnimationClass(selectedMonthLeftIndex);
 
-        this.setChildAnimation();
+            this.setChildAnimation();
 
-        if (headerAnimationClass === undefined) {
-            this.setState({
-                arrayOfIndexesOfVisibleMonths: arrayOfIndexesOfVisibleMonths,
-                selectedMonthLeftIndex: selectedMonthLeftIndex,
-                selectedMonthRightIndex: selectedMonthRightIndex,
-                headerAnimationClass: 'header',
-                arrayOfIndexesLeftAdditionalMonths: arrayOfIndexesLeftAdditionalMonths,
-                arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
-            });
-        } else {
-            this.setState({
-                selectedMonthLeftIndex: selectedMonthLeftIndex,
-                selectedMonthRightIndex: selectedMonthRightIndex,
-                headerAnimationClass: headerAnimationClass
-            });
-
-            setTimeout(function (that) {
-                that.setState({
+            if (headerAnimationClass === undefined) {
+                this.setState({
                     arrayOfIndexesOfVisibleMonths: arrayOfIndexesOfVisibleMonths,
+                    selectedMonthLeftIndex: selectedMonthLeftIndex,
+                    selectedMonthRightIndex: selectedMonthRightIndex,
                     headerAnimationClass: 'header',
                     arrayOfIndexesLeftAdditionalMonths: arrayOfIndexesLeftAdditionalMonths,
                     arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
                 });
-            }, 400, this);
+            } else {
+                this.setState({
+                    selectedMonthLeftIndex: selectedMonthLeftIndex,
+                    selectedMonthRightIndex: selectedMonthRightIndex,
+                    headerAnimationClass: headerAnimationClass
+                });
+
+                setTimeout(function (that) {
+                    that.setState({
+                        arrayOfIndexesOfVisibleMonths: arrayOfIndexesOfVisibleMonths,
+                        headerAnimationClass: 'header',
+                        arrayOfIndexesLeftAdditionalMonths: arrayOfIndexesLeftAdditionalMonths,
+                        arrayOfIndexesRightAdditionalMonths: arrayOfIndexesRightAdditionalMonths
+                    });
+                }, 400, this);
+            }
         }
     }
 
