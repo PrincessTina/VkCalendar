@@ -198,7 +198,7 @@ export default class DateIntervalPickerOpened extends React.Component {
      * (the full range of allowable months with years)
      */
     getFilledArrayOfMonths() {
-        const leftLimitDate = new Date('1/01/2006');
+        const leftLimitDate = new Date(this.props.leftLimitDate);
         const leftLimitYear = leftLimitDate.getFullYear();
         const leftLimitMonth = leftLimitDate.getMonth() + 1;
         const rightLimitDate = new Date();
@@ -448,9 +448,9 @@ export default class DateIntervalPickerOpened extends React.Component {
         let animationClass;
 
         if (desiredStepSize > 0) {
-            animationClass = 'header-right';
+            animationClass = 'header--right';
         } else if (desiredStepSize < 0) {
-            animationClass = 'header-left';
+            animationClass = 'header--left';
         } else {
             return undefined;
         }
@@ -461,7 +461,7 @@ export default class DateIntervalPickerOpened extends React.Component {
             return undefined;
         }
 
-        animationClass += "-" + possibleStepSize;
+        animationClass += "--" + possibleStepSize;
 
         return animationClass;
     }
@@ -532,6 +532,7 @@ export default class DateIntervalPickerOpened extends React.Component {
 DateIntervalPickerOpened.propTypes = {
     dateFrom: PropTypes.instanceOf(Date),
     dateTo: PropTypes.instanceOf(Date),
+    leftLimitDate: PropTypes.number,
     setNewDates: PropTypes.func,
     setNewTime: PropTypes.func
 };

@@ -55,12 +55,14 @@
   margin-right: 16px;
   visibility: hidden;
   opacity: 0;
-  transition: 1s;
+  margin-top: -5px;
+  //transition: 1s;
 }
 
 .dateIntervalPicker__popupWindow-visible {
   .dateIntervalPicker__popupWindow;
   visibility: visible;
   opacity: 1;
-  transition: 1s;
+  margin-top: 0;
+  transition: opacity 100ms linear, margin-top 100ms linear;
 }

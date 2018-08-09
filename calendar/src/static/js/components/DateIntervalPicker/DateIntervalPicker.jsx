@@ -244,6 +244,7 @@ export default class DateIntervalPicker extends React.Component {
                 <div className={this.state.visibilityOfDateIntervalPickerOpened}>
                     <DateIntervalPickerOpened dateTo={this.state.selectedDateTo}
                                               dateFrom={this.state.selectedDateFrom}
+                                              leftLimitDate={this.props.leftLimitDate}
                                               setNewDates={this.setNewDates}
                                               setNewTime={this.setNewTime}/>
                 </div>
@@ -255,12 +256,14 @@ export default class DateIntervalPicker extends React.Component {
 DateIntervalPicker.propTypes = {
     dateFrom: PropTypes.number,
     dateTo: PropTypes.number,
+    leftLimitDate: PropTypes.number,
     onChange: PropTypes.func
 };
 
 DateIntervalPicker.defaultProps = {
     dateFrom: new Date("06/01/18 14:20").getTime(),
     dateTo: new Date("07/11/18 15:00").getTime(),
+    leftLimitDate: new Date('1/01/2006').getTime(),
     onChange: function (selectedDateFrom, selectedDateTo) {
         console.log("onChange is working");
     }
