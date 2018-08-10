@@ -2,26 +2,19 @@
   "name": "calendar",
   "version": "0.0.1",
   "homepage": "http://princesstina.github.io/calendar",
-  "description": "",
+  "description": "test task on date picker",
+  "repository": "https://github.com/PrincessTina/calendar.git",
   "author": "PrincessTina",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "dev": "node_modules\\.bin\\webpack --mode development",
     "prod": "node_modules\\.bin\\webpack --mode production",
     "save": "xcopy src\\static c:\\users\\krist\\documents\\repo\\calendar\\docs /E /Y"
   },
   "dependencies": {
-    "@types/react-dom": "^16.0.6",
-    "less": "^3.7.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4",
-    "uglifyjs-webpack-plugin": "^1.2.7",
-    "webpack": "^4.16.1"
+    "react-dom": "^16.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -29,9 +22,12 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
+    "less": "^3.7.1",
     "less-loader": "^4.1.0",
-    "style-loader": "^0.21.0",
+    "style-loader": "^0.22.1",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
+    "webpack": "^4.16.1",
     "webpack-command": "^0.4.1"
   }
 }
