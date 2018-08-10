@@ -24,62 +24,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="252">
+              <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateIntervalPickerOpened.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/DateIntervalPickerOpened.jsx">
+      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="199" column="29" lean-forward="false" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
-              <folding>
-                <element signature="e#192#230#0" expanded="false" />
-                <element signature="e#326#1369#0" expanded="false" />
-                <element signature="e#1375#1427#0" expanded="false" />
-                <element signature="e#1452#1956#0" expanded="false" />
-                <element signature="e#1962#2023#0" expanded="false" />
-                <element signature="e#2048#2089#0" expanded="false" />
-                <element signature="e#2095#2380#0" expanded="false" />
-                <element signature="e#2436#3453#0" expanded="false" />
-                <element signature="e#3459#3737#0" expanded="false" />
-                <element signature="e#3768#4735#0" expanded="false" />
-                <element signature="e#4741#4941#0" expanded="false" />
-                <element signature="e#4989#5762#0" expanded="false" />
-                <element signature="e#5768#6024#0" expanded="false" />
-                <element signature="e#6055#6480#0" expanded="false" />
-                <element signature="e#6486#6592#0" expanded="false" />
-                <element signature="e#6622#8982#0" expanded="false" />
-                <element signature="e#8988#9230#0" expanded="false" />
-                <element signature="e#9294#10112#0" expanded="false" />
-                <element signature="e#10118#10275#0" expanded="false" />
-                <element signature="e#10353#11862#0" expanded="false" />
-                <element signature="e#11868#12122#0" expanded="false" />
-                <element signature="e#12215#13068#0" expanded="false" />
-                <element signature="e#13074#13540#0" expanded="false" />
-                <element signature="e#13562#15702#0" expanded="false" />
-                <element signature="e#15708#15939#0" expanded="false" />
-                <element signature="e#15986#16659#0" expanded="false" />
-                <element signature="e#16665#16905#0" expanded="false" />
-                <element signature="e#16944#17732#0" expanded="false" />
-                <element signature="e#17738#17813#0" expanded="false" />
-                <element signature="e#17827#18796#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1050">
+              <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dateIntervalPicker.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/dateIntervalPicker.less">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="66" column="60" lean-forward="false" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
+            <state relative-caret-position="210">
+              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -89,8 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>this.state</find>
-      <find>console.log</find>
       <find>this.state.selectedDateTo</find>
       <find>this.props.dateFrom</find>
       <find>this.props.dateTo</find>
@@ -119,6 +86,8 @@
       <find>getChecked</find>
       <find>cli</find>
       <find>header-left</find>
+      <find>id</find>
+      <find>//</find>
     </findStrings>
     <replaceStrings>
       <replace>this.props.dateTo</replace>
@@ -140,7 +109,6 @@
         <option value="$PROJECT_DIR$/src/static/css/hello_world.less" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/static/js/components/Hello.jsx" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/static/css/menu.less" />
         <option value="$PROJECT_DIR$/src/static/css/dateIntervalPickerHidden.less" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPickerHidden.jsx" />
@@ -160,9 +128,12 @@
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/Time/Time.jsx" />
         <option value="$PROJECT_DIR$/src/static/css/main.less" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/dateIntervalPickerOpened.less" />
-        <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/DateIntervalPickerOpened.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPicker.jsx" />
         <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/dateIntervalPicker.less" />
+        <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/constants.jsx" />
+        <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/Calendar/Calendar.jsx" />
+        <option value="$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/DateIntervalPickerOpened.jsx" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
       </list>
     </option>
   </component>
@@ -241,6 +212,11 @@
             <path>
               <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
               <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="node_modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -248,55 +224,6 @@
               <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="compiled" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="DateIntervalPicker" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="calendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="calendar" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="static" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="DateIntervalPicker" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="DateIntervalPickerOpened" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -337,7 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build dev version">
+  <component name="RunManager" selected="npm.build files">
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts>
@@ -399,12 +326,12 @@
       <workItem from="1531922459265" duration="5593000" />
       <workItem from="1531935631760" duration="268362000" />
       <workItem from="1532620305215" duration="120000" />
-      <workItem from="1533727962708" duration="35719000" />
+      <workItem from="1533727962708" duration="43798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="324494000" />
+    <option name="totallyTimeSpent" value="332573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -412,13 +339,13 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26530612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32801822" sideWeight="0.51396346" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32801822" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32801822" sideWeight="0.4860365" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.49375" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.48925886" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39863327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -470,18 +397,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="50" lean-forward="false" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/compiled/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -530,13 +450,6 @@
     <entry file="file://$PROJECT_DIR$/src/registerServiceWorker.js" />
     <entry file="file://$PROJECT_DIR$/src/static/js/compiled/index.js" />
     <entry file="file://$PROJECT_DIR$/src/App.js" />
-    <entry file="file://$PROJECT_DIR$/src/static/js/compiled/bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="13" column="653" lean-forward="false" selection-start-line="13" selection-start-column="653" selection-end-line="13" selection-end-column="653" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.babelrc" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -556,14 +469,6 @@
     <entry file="file://$PROJECT_DIR$/public/index.html" />
     <entry file="file://$PROJECT_DIR$/public/index.js" />
     <entry file="file://$PROJECT_DIR$/src/index.js" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/static/images/dropdown_arrow.png" />
     <entry file="file://$PROJECT_DIR$/src/static/css/hello_world.less" />
     <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/DateIntervalPickerOpened.jsx">
@@ -599,51 +504,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/Calendar/Calendar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="312" column="4" lean-forward="false" selection-start-line="312" selection-start-column="4" selection-end-line="312" selection-end-column="4" />
-          <folding>
-            <element signature="e#91#115#0" expanded="false" />
-            <element signature="e#195#669#0" expanded="false" />
-            <element signature="e#675#717#0" expanded="false" />
-            <element signature="e#742#870#0" expanded="false" />
-            <element signature="e#876#1085#0" expanded="false" />
-            <element signature="e#1119#5054#0" expanded="false" />
-            <element signature="e#5060#5202#0" expanded="false" />
-            <element signature="e#5229#5841#0" expanded="false" />
-            <element signature="e#5847#6041#0" expanded="false" />
-            <element signature="e#6069#6435#0" expanded="false" />
-            <element signature="e#6441#6542#0" expanded="false" />
-            <element signature="e#6564#6797#0" expanded="false" />
-            <element signature="e#6803#7335#0" expanded="false" />
-            <element signature="e#7366#7938#0" expanded="false" />
-            <element signature="e#7944#8242#0" expanded="false" />
-            <element signature="e#8261#8524#0" expanded="false" />
-            <element signature="e#8530#8847#0" expanded="false" />
-            <element signature="e#8866#9520#0" expanded="false" />
-            <element signature="e#9526#9718#0" expanded="false" />
-            <element signature="e#9733#9860#0" expanded="false" />
-            <element signature="e#9866#10045#0" expanded="false" />
-            <element signature="e#10114#10205#0" expanded="false" />
-            <element signature="e#10211#10284#0" expanded="false" />
-            <element signature="e#10298#10626#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="30" column="40" lean-forward="false" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/compiled/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/dateIntervalPickerOpened.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/dateIntervalPicker.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="57" column="19" lean-forward="false" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -660,26 +540,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/menu.less">
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/Calendar/Calendar.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="315">
+          <caret line="51" column="33" lean-forward="false" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#140#164#0" expanded="false" />
+            <element signature="e#244#718#0" expanded="false" />
+            <element signature="e#724#766#0" expanded="false" />
+            <element signature="e#791#919#0" expanded="false" />
+            <element signature="e#925#1134#0" expanded="false" />
+            <element signature="e#1168#5237#0" expanded="false" />
+            <element signature="e#5243#5385#0" expanded="false" />
+            <element signature="e#5412#6024#0" expanded="false" />
+            <element signature="e#6030#6224#0" expanded="false" />
+            <element signature="e#6252#6618#0" expanded="false" />
+            <element signature="e#6624#6725#0" expanded="false" />
+            <element signature="e#6747#6980#0" expanded="false" />
+            <element signature="e#6986#7518#0" expanded="false" />
+            <element signature="e#7549#8121#0" expanded="false" />
+            <element signature="e#8127#8425#0" expanded="false" />
+            <element signature="e#8444#8707#0" expanded="false" />
+            <element signature="e#8713#9030#0" expanded="false" />
+            <element signature="e#9049#9703#0" expanded="false" />
+            <element signature="e#9709#9901#0" expanded="false" />
+            <element signature="e#9916#10043#0" expanded="false" />
+            <element signature="e#10049#10228#0" expanded="false" />
+            <element signature="e#10297#10388#0" expanded="false" />
+            <element signature="e#10394#10467#0" expanded="false" />
+            <element signature="e#10481#10809#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/Time/Time.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        <state relative-caret-position="399">
+          <caret line="160" column="34" lean-forward="false" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#87#107#0" expanded="false" />
@@ -701,18 +599,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/dateIntervalPickerOpened.less">
+    <entry file="file://$PROJECT_DIR$/src/static/css/main.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/menu.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/constants.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/compiled/bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPicker.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="246" column="86" lean-forward="true" selection-start-line="246" selection-start-column="86" selection-end-line="246" selection-end-column="86" />
+        <state relative-caret-position="21">
+          <caret line="211" column="0" lean-forward="true" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#247#326#0" expanded="false" />
@@ -738,61 +660,71 @@
             <element signature="e#6928#7084#0" expanded="false" />
             <element signature="e#7132#7222#0" expanded="false" />
             <element signature="e#7228#7297#0" expanded="false" />
+            <element signature="e#7311#8434#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/DateIntervalPickerOpened/DateIntervalPickerOpened.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="199" column="29" lean-forward="false" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
+        <state relative-caret-position="420">
+          <caret line="75" column="55" lean-forward="false" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
           <folding>
-            <element signature="e#192#230#0" expanded="false" />
-            <element signature="e#326#1369#0" expanded="false" />
-            <element signature="e#1375#1427#0" expanded="false" />
-            <element signature="e#1452#1956#0" expanded="false" />
-            <element signature="e#1962#2023#0" expanded="false" />
-            <element signature="e#2048#2089#0" expanded="false" />
-            <element signature="e#2095#2380#0" expanded="false" />
-            <element signature="e#2436#3453#0" expanded="false" />
-            <element signature="e#3459#3737#0" expanded="false" />
-            <element signature="e#3768#4735#0" expanded="false" />
-            <element signature="e#4741#4941#0" expanded="false" />
-            <element signature="e#4989#5762#0" expanded="false" />
-            <element signature="e#5768#6024#0" expanded="false" />
-            <element signature="e#6055#6480#0" expanded="false" />
-            <element signature="e#6486#6592#0" expanded="false" />
-            <element signature="e#6622#8982#0" expanded="false" />
-            <element signature="e#8988#9230#0" expanded="false" />
-            <element signature="e#9294#10112#0" expanded="false" />
-            <element signature="e#10118#10275#0" expanded="false" />
-            <element signature="e#10353#11862#0" expanded="false" />
-            <element signature="e#11868#12122#0" expanded="false" />
-            <element signature="e#12215#13068#0" expanded="false" />
-            <element signature="e#13074#13540#0" expanded="false" />
-            <element signature="e#13562#15702#0" expanded="false" />
-            <element signature="e#15708#15939#0" expanded="false" />
-            <element signature="e#15986#16659#0" expanded="false" />
-            <element signature="e#16665#16905#0" expanded="false" />
-            <element signature="e#16944#17732#0" expanded="false" />
-            <element signature="e#17738#17813#0" expanded="false" />
-            <element signature="e#17827#18796#0" expanded="false" />
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#233#271#0" expanded="false" />
+            <element signature="e#367#1410#0" expanded="false" />
+            <element signature="e#1416#1468#0" expanded="false" />
+            <element signature="e#1493#1997#0" expanded="false" />
+            <element signature="e#2003#2064#0" expanded="false" />
+            <element signature="e#2089#2130#0" expanded="false" />
+            <element signature="e#2136#2421#0" expanded="false" />
+            <element signature="e#2477#3494#0" expanded="false" />
+            <element signature="e#3500#3778#0" expanded="false" />
+            <element signature="e#3809#4776#0" expanded="false" />
+            <element signature="e#4782#4982#0" expanded="false" />
+            <element signature="e#5030#5803#0" expanded="false" />
+            <element signature="e#5809#6065#0" expanded="false" />
+            <element signature="e#6096#6521#0" expanded="false" />
+            <element signature="e#6527#6633#0" expanded="false" />
+            <element signature="e#6663#9089#0" expanded="false" />
+            <element signature="e#9095#9337#0" expanded="false" />
+            <element signature="e#9401#10219#0" expanded="false" />
+            <element signature="e#10225#10382#0" expanded="false" />
+            <element signature="e#10460#11969#0" expanded="false" />
+            <element signature="e#11975#12229#0" expanded="false" />
+            <element signature="e#12322#13175#0" expanded="false" />
+            <element signature="e#13181#13647#0" expanded="false" />
+            <element signature="e#13669#15809#0" expanded="false" />
+            <element signature="e#15815#16046#0" expanded="false" />
+            <element signature="e#16093#16766#0" expanded="false" />
+            <element signature="e#16772#17012#0" expanded="false" />
+            <element signature="e#17051#17839#0" expanded="false" />
+            <element signature="e#17845#17920#0" expanded="false" />
+            <element signature="e#17934#18903#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/components/DateIntervalPicker/dateIntervalPicker.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="66" column="60" lean-forward="false" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="252">
+          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
           <folding />
         </state>
       </provider>

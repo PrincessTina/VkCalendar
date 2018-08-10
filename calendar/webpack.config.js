@@ -1,3 +1,5 @@
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
     entry: './src/static/js/compiled/index.jsx',
     output: {
@@ -32,5 +34,19 @@ module.exports = {
                 },
             }
         ]
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+                uglifyOptions: {
+                    output: {
+                        comments: false,
+                    }
+                }
+            })]
     }
 };

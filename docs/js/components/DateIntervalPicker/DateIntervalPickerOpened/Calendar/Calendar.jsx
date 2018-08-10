@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import {DaysOfWeek} from "../../constants.jsx";
+
 import './calendar.less';
 
 /**
@@ -57,13 +59,13 @@ export default class Calendar extends React.Component {
         let calendarContent = [];
 
         calendarContent.push(<div className={'title'}>{object.month + " " + object.year}</div>);
-        rowContent.push(<div className={'day'}>Пн</div>);
-        rowContent.push(<div className={'day'}>Вт</div>);
-        rowContent.push(<div className={'day'}>Ср</div>);
-        rowContent.push(<div className={'day'}>Чт</div>);
-        rowContent.push(<div className={'day'}>Пт</div>);
-        rowContent.push(<div className={'weekend'}>Сб</div>);
-        rowContent.push(<div className={'weekend'}>Вс</div>);
+        rowContent.push(<div className={'day'}>{DaysOfWeek.Monday}</div>);
+        rowContent.push(<div className={'day'}>{DaysOfWeek.Tuesday}</div>);
+        rowContent.push(<div className={'day'}>{DaysOfWeek.Wednesday}</div>);
+        rowContent.push(<div className={'day'}>{DaysOfWeek.Thursday}</div>);
+        rowContent.push(<div className={'day'}>{DaysOfWeek.Friday}</div>);
+        rowContent.push(<div className={'weekend'}>{DaysOfWeek.Saturday}</div>);
+        rowContent.push(<div className={'weekend'}>{DaysOfWeek.Sunday}</div>);
         calendarContent.push(<div className={'row'}>{rowContent}</div>);
 
         if (this.state.selectedDateFrom.getFullYear() === object.year ||
@@ -113,7 +115,7 @@ export default class Calendar extends React.Component {
                     } else {
                         className = (className === "") ? 'cell' : className;
                     }
-                    rowContent.push(<div className={className} id={id}
+                    rowContent.push(<div className={className} data-date={id}
                                          onMouseDown={() => this.mouseDown(id)}
                                          onMouseOver={() => this.mouseOver(id)}
                                          onMouseUp={this.mouseUp}>{day}</div>);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Calendar from './Calendar/Calendar.jsx';
 import Time from './Time/Time.jsx';
+import {Months} from '../constants.jsx';
 
 import './dateIntervalPickerOpened.less';
 
@@ -75,7 +76,7 @@ export default class DateIntervalPickerOpened extends React.Component {
     addAdditionalMonthsContent(isLeftAdditionalMonths) {
         const arrayOfIndexesOfAdditionalMonths = (isLeftAdditionalMonths)
             ? this.state.arrayOfIndexesLeftAdditionalMonths : this.state.arrayOfIndexesRightAdditionalMonths;
-        const arraySize = arrayOfIndexesOfAdditionalMonths.length; // 5
+        const arraySize = arrayOfIndexesOfAdditionalMonths.length; // 6
         let content = [];
 
         for (let i = 0; i < arraySize; i++) {
@@ -221,40 +222,40 @@ export default class DateIntervalPickerOpened extends React.Component {
 
                 switch (number) {
                     case 1:
-                        month = 'Январь';
+                        month = Months.January;
                         break;
                     case 2:
-                        month = 'Февраль';
+                        month = Months.February;
                         break;
                     case 3:
-                        month = 'Март';
+                        month = Months.March;
                         break;
                     case 4:
-                        month = 'Апрель';
+                        month = Months.April;
                         break;
                     case 5:
-                        month = 'Май';
+                        month = Months.May;
                         break;
                     case 6:
-                        month = 'Июнь';
+                        month = Months.June;
                         break;
                     case 7:
-                        month = 'Июль';
+                        month = Months.July;
                         break;
                     case 8:
-                        month = 'Август';
+                        month = Months.August;
                         break;
                     case 9:
-                        month = 'Сентябрь';
+                        month = Months.September;
                         break;
                     case 10:
-                        month = 'Октябрь';
+                        month = Months.October;
                         break;
                     case 11:
-                        month = 'Ноябрь';
+                        month = Months.November;
                         break;
                     case 12:
-                        month = 'Декабрь';
+                        month = Months.December;
                         break;
                 }
 
