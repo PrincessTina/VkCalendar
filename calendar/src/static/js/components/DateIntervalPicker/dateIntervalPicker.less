@@ -22,7 +22,7 @@
     .interval(@dateColor, @timeColor) {
       display: flex;
       margin-top: -4.9px;
-      max-width: 171.63px;
+      max-width: 181px;
       height: 20.8px;
       font-size: 11px;
       background-color: @mini-version-color;
@@ -30,7 +30,7 @@
 
       .dateRange {
         margin: 4.5px 0 4.5px 6px;
-        max-width: 83.05px;
+        max-width: 40px;
         height: 13px;
         color: @dateColor;
       }
@@ -38,15 +38,16 @@
       .timeRange {
         position: relative;
         margin: 4.5px 6px 4.5px 5px;
-        max-width: 68.58px;
+        max-width: 30px;
         height: 13px;
         font-style: italic;
         color: @timeColor;
       }
 
       .minus {
-        height: 1px;
         margin-top: 3.9px;
+        max-width: 7px;
+        height: 1px;
       }
 
       .minusBetweenDates {
@@ -83,18 +84,18 @@
 }
 
 .dateIntervalPicker__popupWindow {
-  height: 1px;
+  margin-right: 16px;
   position: relative;
   float: right;
-  margin-right: 16px;
-  visibility: hidden;
+  height: 1px;
+  display: none;
   opacity: 0;
   margin-top: -5px;
 }
 
 .dateIntervalPicker__popupWindow-visible {
   .dateIntervalPicker__popupWindow;
-  visibility: visible;
+  display: block;
   opacity: 1;
   margin-top: 0;
   transition: opacity 100ms linear, margin-top 100ms linear;
