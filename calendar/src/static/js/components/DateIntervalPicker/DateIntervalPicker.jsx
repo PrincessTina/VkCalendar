@@ -291,9 +291,24 @@ export default class DateIntervalPicker extends React.Component {
 }
 
 DateIntervalPicker.propTypes = {
+    /**
+     * start date arrived at the initial time
+     */
     dateFrom: PropTypes.number,
+
+    /**
+     * end date arrived at the initial time
+     */
     dateTo: PropTypes.number,
+
+    /**
+     * the maximum date to which you can scroll to the left
+     */
     leftLimitDate: PropTypes.number,
+
+    /**
+     * callback function that will be called if you change the date
+     */
     onChange: PropTypes.func
 };
 
@@ -302,6 +317,7 @@ DateIntervalPicker.defaultProps = {
     dateTo: new Date("07/11/18 15:00").getTime(),
     leftLimitDate: new Date('1/01/2006').getTime(),
     onChange: function (selectedDateFrom, selectedDateTo) {
-        console.log("onChange is working");
+        console.log('dateFrom: ' + selectedDateFrom);
+        console.log('dateTo: ' + selectedDateTo);
     }
 };

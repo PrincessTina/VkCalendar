@@ -492,9 +492,28 @@ export default class DateIntervalPickerOpened extends React.Component {
 }
 
 DateIntervalPickerOpened.propTypes = {
+    /**
+     * start date
+     */
     dateFrom: PropTypes.instanceOf(Date),
+
+    /**
+     * end date
+     */
     dateTo: PropTypes.instanceOf(Date),
+
+    /**
+     * the maximum date to which you can scroll to the left
+     */
     leftLimitDate: PropTypes.number,
+
+    /**
+     * callback function that displays new dates at mini-version
+     */
     setNewDates: PropTypes.func,
+
+    /**
+     * callback function that displays dates with new time at mini-version
+     */
     setNewTime: PropTypes.func
 };

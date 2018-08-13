@@ -328,10 +328,33 @@ export default class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
+    /**
+     * index of the left (from the pair) selected month
+     */
     selectedMonthLeftIndex: PropTypes.number,
+
+    /**
+     * index of the right (from the pair) selected month
+     */
     selectedMonthRightIndex: PropTypes.number,
+
+    /**
+     * end date
+     */
     dateTo: PropTypes.instanceOf(Date),
+
+    /**
+     * start date
+     */
     dateFrom: PropTypes.instanceOf(Date),
+
+    /**
+     * array full of months from left bound to the right
+     */
     arrayOfMonths: PropTypes.instanceOf(Array),
+
+    /**
+     * callback function that displays new dates at mini-version
+     */
     setNewDates: PropTypes.func
 };

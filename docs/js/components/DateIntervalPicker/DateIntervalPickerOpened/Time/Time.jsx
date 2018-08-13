@@ -281,7 +281,18 @@ export default class Time extends React.Component {
 }
 
 Time.propTypes = {
+    /**
+     * end date
+     */
     dateTo: PropTypes.instanceOf(Date),
+
+    /**
+     * start date
+     */
     dateFrom: PropTypes.instanceOf(Date),
+
+    /**
+     * callback function that displays dates with new time at mini-version
+     */
     setNewTime: PropTypes.func
 };
