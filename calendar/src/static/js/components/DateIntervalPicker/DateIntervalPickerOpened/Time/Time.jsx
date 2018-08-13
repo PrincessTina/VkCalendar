@@ -19,9 +19,10 @@ export default class Time extends React.Component {
 
         this.oldSelectedDateFrom = this.props.dateFrom;
         this.oldSelectedDateTo = this.props.dateTo;
+        this.activeId = null;
 
-        this.processInput = this.processInput.bind(this);
-        this.addZeroInValue = this.addZeroInValue.bind(this);
+        this.processValue = this.processValue.bind(this);
+        this.processArrows = this.processArrows.bind(this);
     }
 
     /**
@@ -39,11 +40,11 @@ export default class Time extends React.Component {
 
         document.addEventListener('click', (event) => {
             if (event.target.classList && !event.target.classList.contains('inputTime')) {
-                that.addZeroInValue();
+                that.addZeroInValues();
             }
 
             if (event.target.classList && (DateIntervalPicker.findParentElementByClass(event.target, 'checkbox') ||
-                event.target.classList.contains('checkbox'))) {
+                    event.target.classList.contains('checkbox'))) {
                 that.setState({
                     isTimeChecked: !that.state.isTimeChecked,
                     timeLineClass: (that.state.timeLineClass === 'timeLine') ? 'timeLine-visible' : 'timeLine'
@@ -119,17 +120,23 @@ export default class Time extends React.Component {
 
         return (
             <div className={'time'}>
-                <input className={'inputTime dark'} type={'number'} id={hoursId} value={selectedHours}
-                       min={0} max={maxHours} step={1} onChange={(event) => this.processInput(maxHours, event)}/>
+                <input className={'inputTime dark'} type={'text'}
+                       id={hoursId}
+                       value={this.addZeroInValue(selectedHours, hoursId)}
+                       onKeyDown={(event) => this.processArrows(maxHours, event)}
+                       onChange={(event) => this.processValue(maxHours, event)}/>
                 <div className={'colon'}>:</div>
-                <input className={'inputTime dark'} type={'number'} id={minutesId} value={selectedMinutes}
-                       min={0} max={maxMinutes} step={1} onChange={(event) => this.processInput(maxMinutes, event)}/>
+                <input className={'inputTime dark'} type={'text'}
+                       id={minutesId}
+                       value={this.addZeroInValue(selectedMinutes, minutesId)}
+                       onKeyDown={(event) => this.processArrows(maxMinutes, event)}
+                       onChange={(event) => this.processValue(maxMinutes, event)}/>
             </div>
         );
     }
 
     /**
-     * Corrects input, sets new times, calls function that sets new time
+     * Corrects value, sets new times, calls function that sets new time
      *
      * @param maxValue
      * @param event
@@ -140,22 +147,16 @@ export default class Time extends React.Component {
      *
      * @state isTimeChecked
      */
-    processInput(maxValue, event) {
+    processValue(maxValue, event) {
         if (this.state.isTimeChecked) {
             const element = event.target;
             let value = element.value;
-            let selectedDateFrom = this.props.dateFrom;
-            let selectedDateTo = this.props.dateTo;
+            let selectedDateFrom = new Date(this.props.dateFrom.getTime());
+            let selectedDateTo = new Date(this.props.dateTo.getTime());
 
-            if (value === "-") {
-                value = 0;
-            } else if (value === "") {
-                value = 0;
-            } else if (value < 0) {
-                element.value = Math.abs(value);
-                value = Math.abs(value);
-            } else if (value > maxValue) {
-                element.value = maxValue;
+            value = value.replace(/[^0-9]/g, '');
+
+            if (value > maxValue) {
                 value = maxValue;
             }
 
@@ -180,14 +181,44 @@ export default class Time extends React.Component {
                 selectedDateTo = timing;
             }
 
-            this.props.setNewTime(selectedDateFrom, selectedDateTo);
+            this.activeId = element.id;
+
+            if (!(selectedDateFrom.getTime() === this.props.dateFrom.getTime() &&
+                selectedDateTo.getTime() === this.props.dateTo.getTime())) {
+                this.props.setNewTime(selectedDateFrom, selectedDateTo);
+            }
         }
     }
 
     /**
-     * Adds one or two zeros at start of value string if it's length < 2
+     * Handles keys: if it's up or down arrow - changes the value (increment or decrement)
+     *
+     * @param maxValue
+     * @param event
      */
-    addZeroInValue() {
+    processArrows(maxValue, event) {
+        const code = event.keyCode;
+        let value = event.target.value;
+
+        if (code === 38 || code === 40) {
+            if (code === 38) {
+                value++;
+            }
+
+            if (code === 40) {
+                value--;
+            }
+
+            event.target.value = (value < 0) ? 0 : value;
+
+            this.processValue(maxValue, event);
+        }
+    }
+
+    /**
+     * Adds one or two zeros at start of value string if it's length < 2 (works for all inputs)
+     */
+    addZeroInValues() {
         let inputElements = document.getElementsByClassName('inputTime');
 
         for (let i = 0; i < inputElements.length; i++) {
@@ -199,6 +230,30 @@ export default class Time extends React.Component {
                 element.value = '00';
             }
         }
+    }
+
+    /**
+     * Adds one or two zeros at start of value string if it's length < 2 (works for required only input)
+     *
+     * @param value
+     * @param id
+     *
+     * @return {string}
+     */
+    addZeroInValue(value, id) {
+        value = value.toString();
+
+        if (id !== this.activeId) {
+            if (value.length === 1) {
+                value = '0' + value;
+            } else if (value.length === 0) {
+                value = '00';
+            }
+        } else if (value === '0') {
+            value = '';
+        }
+
+        return value;
     }
 
     /**
