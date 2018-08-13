@@ -1,51 +1,85 @@
 @border-color: #dedfe1;
+@mini-version-color: #dae2e8;
+@mini-version-hover-color: #587da1;
 @grayColor: #828282;
 
 .dateIntervalPicker {
-  font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 12.5px;
 }
 
 .dateIntervalPickerHidden {
   width: 200px;
   height: 28.8px;
-  padding: 6px 0 0 10px;
+  padding: 7.9px 3px 7.9px 3px;
   margin: 11px 0 0 15px;
   box-sizing: border-box;
   border: @border-color 1px solid;
 
   .wrapper {
     display: flex;
-  }
 
-  .interval {
-    width: 180px;
-    font-size: 11px;
-  }
+    .interval(@dateColor, @timeColor) {
+      display: flex;
+      margin-top: -5px;
+      max-width: 170.63px;
+      height: 20.8px;
+      font-size: 11px;
+      background-color: @mini-version-color;
+      border-radius: 2px;
 
-  .timeRange {
-    position: absolute;
-    width: max-content;
-    margin: -14px 0 0 92px;
-    font-size: 10px;
-    font-style: italic;
-    color: @grayColor;
+      .dateRange {
+        margin: 4.5px 0 4.5px 6px;
+        max-width: 83.05px;
+        height: 13px;
+        color: @dateColor;
+      }
+
+      .timeRange {
+        position: relative;
+        margin: 4.5px 6px 4.5px 5px;
+        max-width: 68.58px;
+        height: 13px;
+        font-style: italic;
+        color: @timeColor;
+      }
+
+      .minus {
+        height: 1px;
+        margin-top: 3.9px;
+      }
+
+      .minusBetweenDates {
+        .minus;
+        color: @dateColor;
+      }
+
+      .minusBetweenTime {
+        .minus;
+        color: @timeColor;
+      }
+    }
+
+    .interval {
+      .interval(black, @grayColor);
+    }
+
+    .interval:hover {
+      .interval(white, white);
+      cursor: pointer;
+      background-color: @mini-version-hover-color;
+    }
   }
 
   .calendar-icon {
     position: absolute;
-    margin-left: 167px;
+    margin: -1px 0 0 179px;
   }
 
   .calendar-icon img {
     width: 13px;
     height: auto;
   }
-}
-
-.dateIntervalPickerHidden:hover {
-  cursor: pointer;
-  background-color: fadeout(@border-color, 40%);
 }
 
 .dateIntervalPicker__popupWindow {

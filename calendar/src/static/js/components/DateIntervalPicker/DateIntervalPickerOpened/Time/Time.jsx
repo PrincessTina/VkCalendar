@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import DateIntervalPicker from "../../DateIntervalPicker.jsx";
+
 import './time.less';
 
 /**
@@ -40,7 +42,7 @@ export default class Time extends React.Component {
                 that.addZeroInValue();
             }
 
-            if (event.target.classList && (that.findParentElementByClass(event.target, 'checkbox') ||
+            if (event.target.classList && (DateIntervalPicker.findParentElementByClass(event.target, 'checkbox') ||
                 event.target.classList.contains('checkbox'))) {
                 that.setState({
                     isTimeChecked: !that.state.isTimeChecked,
@@ -77,26 +79,6 @@ export default class Time extends React.Component {
                 }
             }
         });
-    }
-
-    /**
-     * Checks element parent's classes recursively for compliance with the sought
-     *
-     * @param element
-     * @param className
-     *
-     * @returns {boolean}
-     */
-    findParentElementByClass(element, className) {
-        while (element && element.parentNode) {
-            element = element.parentNode;
-
-            if (element.classList && element.classList.contains(className)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**

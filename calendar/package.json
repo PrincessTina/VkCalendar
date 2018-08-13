@@ -12,6 +12,7 @@
     "save": "xcopy src\\static c:\\users\\krist\\documents\\repo\\calendar\\docs /E /Y"
   },
   "dependencies": {
+    "@types/react-dom": "^16.0.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"

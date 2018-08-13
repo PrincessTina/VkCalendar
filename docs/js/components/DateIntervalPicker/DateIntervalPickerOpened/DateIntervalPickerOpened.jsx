@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import DateIntervalPicker from "../DateIntervalPicker.jsx";
 import Calendar from './Calendar/Calendar.jsx';
 import Time from './Time/Time.jsx';
-import {Months} from '../constants.jsx';
 
 import './dateIntervalPickerOpened.less';
 
@@ -218,46 +218,7 @@ export default class DateIntervalPickerOpened extends React.Component {
             }
 
             for (let number = startNumber; number <= finishNumber; number++) {
-                let month;
-
-                switch (number) {
-                    case 1:
-                        month = Months.January;
-                        break;
-                    case 2:
-                        month = Months.February;
-                        break;
-                    case 3:
-                        month = Months.March;
-                        break;
-                    case 4:
-                        month = Months.April;
-                        break;
-                    case 5:
-                        month = Months.May;
-                        break;
-                    case 6:
-                        month = Months.June;
-                        break;
-                    case 7:
-                        month = Months.July;
-                        break;
-                    case 8:
-                        month = Months.August;
-                        break;
-                    case 9:
-                        month = Months.September;
-                        break;
-                    case 10:
-                        month = Months.October;
-                        break;
-                    case 11:
-                        month = Months.November;
-                        break;
-                    case 12:
-                        month = Months.December;
-                        break;
-                }
+                let month = DateIntervalPicker.getMonthFromNumber(number);
 
                 const object = {
                     year: year,

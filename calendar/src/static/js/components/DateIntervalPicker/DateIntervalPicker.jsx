@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import DateIntervalPickerOpened from './DateIntervalPickerOpened/DateIntervalPickerOpened.jsx';
+import {Months} from './constants.jsx';
 
 import './dateIntervalPicker.less';
 import icon from '../../../images/calendar.png';
@@ -58,7 +59,7 @@ export default class DateIntervalPicker extends React.Component {
         const that = this;
 
         document.addEventListener('click', (event) => {
-            if (!that.findParentElementByClass(event.target, 'dateIntervalPicker') &&
+            if (!DateIntervalPicker.findParentElementByClass(event.target, 'dateIntervalPicker') &&
                 event.target.tagName !== 'HTML') {
                 that.closeWindowFunction();
             }
@@ -73,7 +74,7 @@ export default class DateIntervalPicker extends React.Component {
      *
      * @returns {boolean}
      */
-    findParentElementByClass(element, className) {
+    static findParentElementByClass(element, className) {
         while (element && element.parentNode) {
             element = element.parentNode;
 
@@ -143,55 +144,91 @@ export default class DateIntervalPicker extends React.Component {
     }
 
     /**
-     * Returns date xml content
+     * Returns full date content
      *
-     * @state selectedDateTo
      * @state selectedDateFrom
+     * @state selectedDateTo
      *
-     * @returns {XML}
+     * @return {Array}
      */
-    displayDate() {
+    display() {
         const dateFromDay = this.addZero(this.state.selectedDateFrom.getDate());
-        const dateFromMonth = this.addZero(this.state.selectedDateFrom.getMonth() + 1);
+        const dateFromMonth = this.processMonth(DateIntervalPicker.getMonthFromNumber(
+            this.state.selectedDateFrom.getMonth() + 1));
+        const dateFromHours = this.addZero(this.state.selectedDateFrom.getHours());
+        const dateFromMinutes = this.addZero(this.state.selectedDateFrom.getMinutes());
         const dateToDay = this.addZero(this.state.selectedDateTo.getDate());
-        const dateToMonth = this.addZero(this.state.selectedDateTo.getMonth() + 1);
-        const dateToYear = this.addZero(this.state.selectedDateTo.getFullYear() % 1000);
+        const dateToMonth = this.processMonth(DateIntervalPicker.getMonthFromNumber(
+            this.state.selectedDateTo.getMonth() + 1));
+        const dateToHours = this.addZero(this.state.selectedDateTo.getHours());
+        const dateToMinutes = this.addZero(this.state.selectedDateTo.getMinutes());
+        let content = [];
+
+        content.push(<div className={'dateRange'}>{dateFromDay + " " + dateFromMonth}</div>);
+        content.push(<div className={'timeRange'}>{dateFromHours + ":" + dateFromMinutes}</div>);
 
         if (dateFromDay === dateToDay && dateFromMonth === dateToMonth) {
-            return (
-                <div className={'dateRange'}>{dateToDay + "." + dateToMonth + "." + dateToYear}</div>
-            );
+            if (this.state.selectedDateFrom.getTime() !== this.state.selectedDateTo.getTime()) {
+                content.push(<div className={'minusBetweenTime'}> &minus; </div>);
+                content.push(<div className={'timeRange'}>{dateToHours + ":" + dateToMinutes}</div>);
+            }
         } else {
-            return (
-                <div className={'dateRange'}>{dateFromDay + "." + dateFromMonth} &minus; {dateToDay
-                + "." + dateToMonth + "." + dateToYear}</div>
-            );
+            content.push(<div className={'minusBetweenDates'}> &minus; </div>);
+            content.push(<div className={'dateRange'}>{dateToDay + " " + dateToMonth}</div>);
+            content.push(<div className={'timeRange'}>{dateToHours + ":" + dateToMinutes}</div>);
+        }
+
+        return content;
+    }
+
+    /**
+     * Returns month's name by the appropriate number
+     *
+     * @param number
+     *
+     * @returns {string}
+     */
+    static getMonthFromNumber(number) {
+        switch (number) {
+            case 1:
+                return Months.January;
+            case 2:
+                return Months.February;
+            case 3:
+                return Months.March;
+            case 4:
+                return Months.April;
+            case 5:
+                return Months.May;
+            case 6:
+                return Months.June;
+            case 7:
+                return Months.July;
+            case 8:
+                return Months.August;
+            case 9:
+                return Months.September;
+            case 10:
+                return Months.October;
+            case 11:
+                return Months.November;
+            case 12:
+                return Months.December;
         }
     }
 
     /**
-     * Returns time xml content
+     * Returns abbreviated name of month
      *
-     * @state selectedDateTo
-     * @state selectedDateFrom
+     * @param monthName
      *
-     * @returns {XML}
+     * @returns {string}
      */
-    displayTime() {
-        const dateFromHours = this.addZero(this.state.selectedDateFrom.getHours());
-        const dateFromMinutes = this.addZero(this.state.selectedDateFrom.getMinutes());
-        const dateToHours = this.addZero(this.state.selectedDateTo.getHours());
-        const dateToMinutes = this.addZero(this.state.selectedDateTo.getMinutes());
-
-        if (this.state.selectedDateFrom.getTime() === this.state.selectedDateTo.getTime()) {
-            return (
-                <div className={'timeRange'}>{dateFromHours + ":" + dateFromMinutes}</div>
-            );
+    processMonth(monthName) {
+        if (monthName.length === 3) {
+            return monthName.substr(0,2) + 'я';
         } else {
-            return (
-                <div className={'timeRange'}>{dateFromHours + ":" + dateFromMinutes} &minus; {dateToHours +
-                ":" + dateToMinutes}</div>
-            );
+            return monthName.substr(0,3);
         }
     }
 
@@ -233,7 +270,7 @@ export default class DateIntervalPicker extends React.Component {
                 <div className={'dateIntervalPickerHidden'} onClick={this.changeVisibilityOfDateIntervalPickerOpened}>
                     <div className={'wrapper'}>
                         <div className={'interval'}>
-                            {this.displayDate()}{this.displayTime()}
+                            {this.display()}
                         </div>
                         <div className={'calendar-icon'}>
                             <img src={icon}/>

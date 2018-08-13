@@ -34,15 +34,16 @@ input::-webkit-inner-spin-button {
 
   .timeLine {
     .line;
-    margin-left: -3px;
-    padding-top: 10px;
+    position: absolute;
+    left: 51px;
     visibility: hidden;
+    padding-top: 5px;
     opacity: 0;
-    transition: 1s;
+    transition: opacity 100ms linear, padding-top 100ms linear;
 
     .time {
       .line;
-      margin-right: 111px;
+      margin-right: 85px;
 
       .inputTime {
         text-align: center;
@@ -93,6 +94,7 @@ input::-webkit-inner-spin-button {
   .timeLine-visible {
     .timeLine;
     visibility: visible;
+    padding-top: 10px;
     opacity: 1;
   }
 }
