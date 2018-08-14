@@ -256,7 +256,14 @@ export default class DateIntervalPicker extends React.Component {
      * @props onChange
      */
     onChange(selectedDateFrom, selectedDateTo) {
-        this.props.onChange(selectedDateFrom.getTime(), selectedDateTo.getTime());
+        const dateFrom = new Date(selectedDateFrom.getMonth() + 1 + '/' + selectedDateFrom.getDate() + '/' +
+            selectedDateFrom.getFullYear() + ' ' + selectedDateFrom.getHours() + ':' + selectedDateFrom.getMinutes() +
+            ':00');
+        const dateTo = new Date(selectedDateTo.getMonth() + 1 + '/' + selectedDateTo.getDate() + '/' +
+            selectedDateTo.getFullYear() + ' ' + selectedDateTo.getHours() + ':' + selectedDateTo.getMinutes() +
+            ':59');
+
+        this.props.onChange(dateFrom.getTime(), dateTo.getTime());
     }
 
     /**

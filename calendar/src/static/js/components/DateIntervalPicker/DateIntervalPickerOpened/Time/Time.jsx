@@ -22,7 +22,7 @@ export default class Time extends React.Component {
         this.activeId = null;
 
         this.processValue = this.processValue.bind(this);
-        this.processArrows = this.processArrows.bind(this);
+        this.processKeys = this.processKeys.bind(this);
     }
 
     /**
@@ -40,6 +40,7 @@ export default class Time extends React.Component {
 
         document.addEventListener('click', (event) => {
             if (event.target.classList && !event.target.classList.contains('inputTime')) {
+                this.activeId = null;
                 that.addZeroInValues();
             }
 
@@ -60,7 +61,7 @@ export default class Time extends React.Component {
                     dateFrom = new Date((dateFrom.getMonth() + 1) + "/" + dateFrom.getDate() + "/" +
                         dateFrom.getFullYear() + " 00:00");
                     dateTo = new Date((dateTo.getMonth() + 1) + "/" + dateTo.getDate() + "/" +
-                        dateTo.getFullYear() + " 00:00");
+                        dateTo.getFullYear() + " 23:59");
 
                     that.props.setNewTime(dateFrom, dateTo);
                 } else {
@@ -123,13 +124,13 @@ export default class Time extends React.Component {
                 <input className={'inputTime dark'} type={'text'}
                        id={hoursId}
                        value={this.addZeroInValue(selectedHours, hoursId)}
-                       onKeyDown={(event) => this.processArrows(maxHours, event)}
+                       onKeyDown={(event) => this.processKeys(maxHours, event)}
                        onChange={(event) => this.processValue(maxHours, event)}/>
                 <div className={'colon'}>:</div>
                 <input className={'inputTime dark'} type={'text'}
                        id={minutesId}
                        value={this.addZeroInValue(selectedMinutes, minutesId)}
-                       onKeyDown={(event) => this.processArrows(maxMinutes, event)}
+                       onKeyDown={(event) => this.processKeys(maxMinutes, event)}
                        onChange={(event) => this.processValue(maxMinutes, event)}/>
             </div>
         );
@@ -191,12 +192,13 @@ export default class Time extends React.Component {
     }
 
     /**
-     * Handles keys: if it's up or down arrow - changes the value (increment or decrement)
+     * Handles keys: if it's up or down arrow - changes the value (increment or decrement);
+     * also handles the tabs
      *
      * @param maxValue
      * @param event
      */
-    processArrows(maxValue, event) {
+    processKeys(maxValue, event) {
         const code = event.keyCode;
         let value = event.target.value;
 
@@ -209,14 +211,29 @@ export default class Time extends React.Component {
                 value--;
             }
 
-            event.target.value = (value < 0) ? 0 : value;
+            if (value < 0) {
+                value = '';
+            } else if (value > maxValue) {
+                value = maxValue;
+            }
 
+            event.target.value = value;
             this.processValue(maxValue, event);
+        } else if (code === 9) {
+            if (event.target.id === 'm2' && !event.shiftKey) {
+                event.preventDefault();
+                document.getElementById('h1').select();
+            } else if (event.target.id === 'h1' && event.shiftKey) {
+                event.preventDefault();
+                document.getElementById('m2').select();
+            }
+
+            this.addZeroInValues();
         }
     }
 
     /**
-     * Adds one or two zeros at start of value string if it's length < 2 (works for all inputs)
+     * Adds one or two zeros at start of value string if it's length < 2 (works for all inputs when focus was removed)
      */
     addZeroInValues() {
         let inputElements = document.getElementsByClassName('inputTime');
